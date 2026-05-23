@@ -1,0 +1,290 @@
+[
+    {
+        "username" : "Aks",
+        "name" : "Ashu",
+        "password" : "aks",
+        "start" : "2025-01-01",
+        "banks" : [
+            {
+                "name":"First",  
+                "balance":400
+            },
+            {
+                "name":"Second", 
+                "balance":800
+            }
+        ],
+        "ledger" : [
+            {
+                "serial":1,
+                "date": "2025-1-1",
+                "description": "ledger", 
+                "amount": 1200,
+                "transactionType":"CREDIT",
+                "bankName": "First",
+                "balance": 2200,
+                "investment": true,
+                "investmentName": "Gold",
+                "investmentType": "SIP",
+                "debt": true,
+                "debtFrom" : "noone",
+                "receivable" : true,
+                "receivableFrom":"noone",
+                "budget": true,
+                "budgetSection": "income",
+                "incomeName" : "income",
+                "expenseName" : "expense"
+            },
+            {
+                "serial":2,
+                "date": "2025-1-1",
+                "description": "ledger",
+                "amount": 1200,
+                "transactionType":"CREDIT",
+                "bankName": "First",
+                "balance": 2200,
+                "investment": false,
+                "investmentName": null,
+                "investmentType": null,
+                "debt": true,
+                "debtFrom" : "noone",
+                "receivable" : true,
+                "receivableFrom":"noone",
+                "budget": true,
+                "budgetSection": "income",
+                "incomeName" : "income",
+                "expenseName" : "expense"
+            },
+            {
+                "serial":3,
+                "date": "2025-1-1",
+                "description": "ledger",
+                "amount": 1200,
+                "transactionType":"DEBIT",
+                "bankName": "First",
+                "balance": 2200,
+                "investment": false,
+                "investmentName": null,
+                "investmentType": null,
+                "debt": true,
+                "debtFrom" : "noone",
+                "receivable" : true,
+                "receivableFrom":"noone",
+                "budget": true,
+                "budgetSection": "income",
+                "incomeName" : "income",
+                "expenseName" : "expense"
+            },
+            {
+                "serial":4,
+                "date": "2025-1-1",
+                "description": "ledger",
+                "amount": 1200,
+                "transactionType":"CREDIT",
+                "bankName": "First",
+                "balance": 2200,
+                "investment": false,
+                "investmentName": null,
+                "investmentType": null,
+                "debt": true,
+                "debtFrom" : "noone",
+                "receivable" : true,
+                "receivableFrom":"noone",
+                "budget": true,
+                "budgetSection": "income",
+                "incomeName" : "income",
+                "expenseName" : "expense"
+            },
+            {
+                "serial":5,
+                "date": "2025-1-1",
+                "description": "ledger",
+                "amount": 1200,
+                "transactionType":"CREDIT",
+                "bankName": "First",
+                "balance": 2200,
+                "investment": false,
+                "investmentName": null,
+                "investmentType": null,
+                "debt": true,
+                "debtFrom" : "noone",
+                "receivable" : true,
+                "receivableFrom":"noone",
+                "budget": true,
+                "budgetSection": "income",
+                "incomeName" : "income",
+                "expenseName" : "expense"
+            },
+            {
+                "serial":6,
+                "date": "2025-1-1",
+                "description": "ledger",
+                "amount": 1200,
+                "transactionType":"DEBIT",
+                "bankName": "Second",
+                "balance": 2200,
+                "investment": false,
+                "investmentName": null,
+                "investmentType": null,
+                "debt": true,
+                "debtFrom" : "noone",
+                "receivable" : true,
+                "receivableFrom":"noone",
+                "budget": true,
+                "budgetSection": "income",
+                "incomeName" : "income",
+                "expenseName" : "expense"
+            }
+        ],
+        "debts" : [
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Debt",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Debt",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Debt",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Debt",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Debt",
+                "status": "PAID",
+                "transactionId" : ""
+            }
+        ],
+        "receivables" : [
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Receivable",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Receivable",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Receivable",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Receivable",
+                "status": "REMAINING",
+                "transactionId" : ""
+            },
+            {
+                "from": "Anshik",
+                "amount": 300,
+                "date": "2025-1-1",
+                "description" : "Receivable",
+                "status": "RECEIVED",
+                "transactionId" : ""
+            }
+        ],
+        "investments" : [
+            {
+                "serial" : 1,
+                "name" : "Gold", 
+                "type" : "SIP",
+                "installment" : 200,
+                "cumulative" : 4,
+                "payment" : 800,
+                "currentValue" : 800 
+            },
+            {
+                "serial" : 2,
+                "name" : "Silver",
+                "type" : "SIP",
+                "installment" : 200,
+                "cumulative" : 4,
+                "payment" : 800,
+                "currentValue" : 800 
+            }
+        ],
+        "budget" : {
+            "credit" : [
+                {
+                    "month" : 0,
+                    "year" : 2026,
+                    "values" : [ 
+                        {
+                            "id" : 1,
+                            "income" : "salary",
+                            "amount" : 50000
+                        }
+                    ] 
+                }
+            ],
+            "debit" : [
+                {
+                    "month" : 0,
+                    "year" : 2026,
+                    "values" : [
+                        {
+                            "id" : 1,
+                            "expectedExpense" : "expense",
+                            "expectedAmount" : 2000,
+                            "actualAmount" : 0
+                        },
+                        {
+                            "id" : 2,
+                            "expectedExpense" : "expense",
+                            "expectedAmount" : 3000,
+                            "actualAmount" : 2500
+                        }
+                    ]   
+                } 
+            ]
+        },
+        "total" : [
+            {
+                "id" : 1,
+                "month" : "2026-1-1",
+                "totalExpectedExpenseAmount" : 5000,
+                "totalActualExpenseAmount" : 2500,
+                "totalCreditAmount" : 50000,
+                "savings" : 47500,
+                "previousSavings" : 0
+            }
+        ]
+    }
+]

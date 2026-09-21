@@ -7,7 +7,9 @@ const TotalSavings = ({month, year}) => {
   const totals = useSelector((state) => state.total.value);
   const desiredValue = useMemo(() => {
     if(month==null || year==null || month.length===0 || year.length===0) return "Please Select Month And Year";
-    return totals.find((val) => new Date(val.month).getMonth()===month && new Date(val.month).getFullYear()===year);
+        
+    if(totals.length===0) return "No Data Available";
+    return totals.find((val) => new Date(val.month).getMonth()===(Number(month) - 1) && new Date(val.month).getFullYear()===Number(year));
   },
   [month, year, totals]);
 

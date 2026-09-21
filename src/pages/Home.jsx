@@ -5,7 +5,7 @@ import UserDashboard from './UserDashboard';
 import Login from './Login';
 import { useSelector, useDispatch } from 'react-redux';
 import Data from '../data/FetchData';
-import { setName, setStartDay } from '../redux/slices/userSlice';
+import { setName } from '../redux/slices/userSlice';
 import { banksFetchedSuccessfully } from '../redux/slices/banksSlice';
 import { ledgerFetchedSuccessfully } from '../redux/slices/ledgerSlice';
 import { debtsFetchedSuccessfully } from '../redux/slices/debtsSlice';
@@ -20,7 +20,6 @@ const Home = () => {
 
   useEffect(() => {
     const getUserData = () => {
-      dispatch(setStartDay(new Date(Data.start).toISOString()));
       dispatch(setName(Data.name));
       
       dispatch(banksFetchedSuccessfully(Data.banks));

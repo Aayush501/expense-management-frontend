@@ -7,15 +7,16 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import BudgetTable from '../components/tables/BudgetTable';
-import DropDownMenu from '../components/DropDownMenu';
 import TotalSavings from '../components/TotalSavings';
 import AddIncomeForm from '../components/forms/AddIncomeForm';
 import AddExpectedExpenseForm from '../components/forms/AddExpectedExpenseForm';
+import { CalculatedDates } from '../data/DatesAndTimesCalculation';
+import DatePicker from '../components/forms/DatePicker';
 
 const Budget = () => {
 
-  const [month, setMonth] = useState(-1);
-  const [year, setYear] = useState(-1);
+  const [month, setMonth] = useState(CalculatedDates.currentMonth);
+  const [year, setYear] = useState(CalculatedDates.currentYear);
   const [addIncomeForm, SetAddIncomeForm] = useState(false);
   const [addExpectedExpenseForm, setAddExpectedExpenseForm] = useState(false);
   
@@ -26,10 +27,15 @@ const Budget = () => {
   //   console.log('type of year', typeof year);
   // }, [month, year]);
 
+  const setMonthAndYear = (monthYear) => {
+    setMonth(monthYear.substring(5));
+    setYear(monthYear.substring(0,4));
+  }
+
   return (
     <>
-        <div className='m-3'>
-          <DropDownMenu setMonth={setMonth} setYear={setYear} />
+        <div className='date-picker m-3'>
+          <DatePicker SelectionLabel={"Select Month and Year"} selectionType={"month"} selectedDate={year+"-"+month} setDate={setMonthAndYear} />
         </div>
         <div className='m-3' style={{border:'3px green solid', borderRadius:'10px', overflow:'hidden'}}>
           <TotalSavings month={month} year={year} />
@@ -49,7 +55,7 @@ const Budget = () => {
                     }
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <BudgetTable name={"credit"} month={month} year={year} />
+                    <BudgetTable name={"credit"} month={Number(month).toString()} year={(Number(year)).toString()} />
                   </ListGroup.Item>
                 </ListGroup>
               </Card>

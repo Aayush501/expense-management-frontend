@@ -9,16 +9,16 @@ const BudgetTable = ({name="", month="", year=""}) => {
     const data = useBudgetTableData();
 
     const showables = useMemo(() => {
-        const desiredCreditData = month.length===0 || year.length===0? {values : []} : data.credit.find((val) => val.month===month && val.year===year);
+        const desiredCreditData = month.length===0 || year.length===0? {values : []} : data.credit.find((val) => { return val.month===(Number(month)-1) && val.year==year});
 
-        const desiredDebitData = month.length===0 || year.length===0? {values : []} : data.debit.find((val) => val.month===month && val.year===year)
+        const desiredDebitData = month.length===0 || year.length===0? {values : []} : data.debit.find((val) => val.month===(Number(month)-1) && val.year==year)
         
-        const desiredTotalsValue = month.length===0 || year.length===0? {values : []} : data.totals.find((val) => new Date(val.month).getMonth()===month && new Date(val.month).getFullYear()===year);
+        const desiredTotalsValue = month.length===0 || year.length===0? {values : []} : data.totals.find((val) => new Date(val.month).getMonth()===(Number(month)-1) && new Date(val.month).getFullYear()==year);
         
         return {
-            creditDataToShow : desiredCreditData===undefined? [] : desiredCreditData.values,
-            debtiDataToShow : desiredDebitData===undefined? [] : desiredDebitData.values,
-            totalCreditAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.totalCreditAmount,
+            creditDataToShow : desiredCreditData===undefined? [] : desiredCreditData.length===0? [] : desiredCreditData.values,
+            debtiDataToShow : desiredDebitData===undefined? [] : desiredDebitData.length===0? [] :  desiredDebitData.values,
+            totalCreditAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.length===0? "" :  desiredTotalsValue.totalCreditAmount,
             expectedExpenseAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.totalExpectedExpenseAmount,
             actualExpenseAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.totalActualExpenseAmount,
             previousSavings : desiredTotalsValue===undefined ? "" : desiredTotalsValue.previousSavings

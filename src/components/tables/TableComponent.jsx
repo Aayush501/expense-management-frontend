@@ -36,7 +36,8 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
       } 
 
       let filteredEntries = ledgerEntries.filter(i => {
-        return i.bankName===bank && new Date(i.date).getMonth()===month && new Date(i.date).getFullYear()===year && i.transactionType === "CREDIT"});
+        return i.bankName===bank && new Date(i.date).getMonth()==Number(month)-1 && new Date(i.date).getFullYear()==Number(year) && i.transactionType === "CREDIT"
+      });
 
       if(filteredEntries.length==0){
         return 0;
@@ -57,7 +58,8 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
       } 
 
       let filteredEntries = ledgerEntries.filter(i => {
-        return i.bankName===bank && new Date(i.date).getMonth()===month && new Date(i.date).getFullYear()===year && i.transactionType === "DEBIT"});
+        return i.bankName===bank && new Date(i.date).getMonth()==Number(month)-1 && new Date(i.date).getFullYear()==Number(year) && i.transactionType === "DEBIT"
+      });
 
       if(filteredEntries.length==0){
         return 0;

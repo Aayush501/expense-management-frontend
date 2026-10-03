@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TableComponent from '../components/tables/TableComponent';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import AddBankForm from '../components/forms/AddBankForm';
 import DatePicker from '../components/forms/DatePicker';
 import { CalculatedDates } from '../data/DatesAndTimesCalculation';
+import { useDispatch } from 'react-redux';
+import { fetchLedgerSummaryForSpecificMonth } from '../redux/slices/ledgerSlice';
 
 const UserDashBoardHome = () => {
 
@@ -17,6 +19,12 @@ const UserDashBoardHome = () => {
     setMonth(monthYear.substring(5));
     setYear(monthYear.substring(0,4));
   }
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLedgerSummaryForSpecificMonth({month : month, year : year}));
+  }, [month, year])
 
   return (
     <>

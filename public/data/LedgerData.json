@@ -1,0 +1,122 @@
+[
+    {
+        "transactionId" : "Tr01",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B01",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr02",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B01",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr03",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B01",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr04",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B01",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr05",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"DEBIT",
+        "bankId": "B01",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr06",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"DEBIT",
+        "bankId": "B01",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr01",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B02",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr02",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B02",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr03",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B02",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr04",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"CREDIT",
+        "bankId": "B02",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr05",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"DEBIT",
+        "bankId": "B02",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    },
+    {
+        "transactionId" : "Tr06",
+        "date": "2025-1-1",
+        "description": "ledger", 
+        "amount": 1200,
+        "transactionType":"DEBIT",
+        "bankId": "B02",
+        "walletId": "",
+        "balanceAfterThisTransaction": 2200
+    }
+]

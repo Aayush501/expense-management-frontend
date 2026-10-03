@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-// import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import { Button, Container } from 'react-bootstrap';
 import '../App.css';
 import Row from 'react-bootstrap/Row';
@@ -12,6 +11,8 @@ import AddIncomeForm from '../components/forms/AddIncomeForm';
 import AddExpectedExpenseForm from '../components/forms/AddExpectedExpenseForm';
 import { CalculatedDates } from '../data/DatesAndTimesCalculation';
 import DatePicker from '../components/forms/DatePicker';
+import { useDispatch } from 'react-redux';
+import { fetchBudget } from '../redux/slices/budgetSlice';
 
 const Budget = () => {
 
@@ -19,18 +20,16 @@ const Budget = () => {
   const [year, setYear] = useState(CalculatedDates.currentYear);
   const [addIncomeForm, SetAddIncomeForm] = useState(false);
   const [addExpectedExpenseForm, setAddExpectedExpenseForm] = useState(false);
-  
-  // useEffect(()=>{
-  //   console.log("month", month);
-  //   console.log("year", year);
-  //   console.log('type of month', typeof month);
-  //   console.log('type of year', typeof year);
-  // }, [month, year]);
+  const dispatch = useDispatch();
 
   const setMonthAndYear = (monthYear) => {
     setMonth(monthYear.substring(5));
     setYear(monthYear.substring(0,4));
   }
+
+  useEffect(() => {
+    dispatch(fetchBudget({month, year}));
+  }, [month, year])
 
   return (
     <>

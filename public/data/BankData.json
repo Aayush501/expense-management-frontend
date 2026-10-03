@@ -1,0 +1,16 @@
+[
+    {
+        "id" : "b01",
+        "name":"First",  
+        "balance":400,
+        "linkedPhoneNumber" : "1234567890",
+        "linkedEmail" : "ashu@gmail.com"
+    },
+    {
+        "id" : "b02",
+        "name":"Second",  
+        "balance":500,
+        "linkedPhoneNumber" : "1234567890",
+        "linkedEmail" : "ashu@gmail.com"
+    }
+]

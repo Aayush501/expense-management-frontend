@@ -1,11 +1,23 @@
-import React from 'react'
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 import PortfolioTabs from '../components/PortfolioTabs';
+import { useDispatch } from 'react-redux';
+import { fetchInvestmentLedgerForSpecificUser, fetchInvestmentsForSpecificUser } from '../redux/slices/investmentsSlice';
+import { fetchPaidDebt, fetchRemainingDebts } from '../redux/slices/debtsSlice';
+import { fetchReceivedReceivables, fetchRemainingReceivables } from '../redux/slices/receivablesSlice';
 
 const Portfolio = () => {
+
+  const dispatch = useDispatch();
+  dispatch(fetchInvestmentsForSpecificUser({}));
+  dispatch(fetchInvestmentLedgerForSpecificUser({}));
+  dispatch(fetchPaidDebt({}));
+  dispatch(fetchRemainingDebts({}));
+  dispatch(fetchRemainingReceivables({}));
+  dispatch(fetchReceivedReceivables({}));
+
   return (
     <>
       <div className="mt-3 mx-2">

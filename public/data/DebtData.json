@@ -1,0 +1,42 @@
+[
+    {
+        "debtId" : "De01",
+        "amount": 300,
+        "takenFrom": "Anshik",
+        "date": "2025-1-1",
+        "description" : "Debt",
+        "status": "REMAINING"
+    },
+    {
+        "debtId" : "De02",
+        "amount": 300,
+        "takenFrom": "Anshik",
+        "date": "2025-1-1",
+        "description" : "Debt",
+        "status": "REMAINING"
+    },
+    {
+        "debtId" : "De03",
+        "amount": 300,
+        "takenFrom": "Anshik",
+        "date": "2025-1-1",
+        "description" : "Debt",
+        "status": "REMAINING"
+    },
+    {
+        "debtId" : "De04",
+        "amount": 300,
+        "takenFrom": "Anshik",
+        "date": "2025-1-1",
+        "description" : "Debt",
+        "status": "PAID"
+    },
+    {
+        "debtId" : "De05",
+        "amount": 300,
+        "takenFrom": "Anshik",
+        "date": "2025-1-1",
+        "description" : "Debt",
+        "status": "PAID"
+    }
+]

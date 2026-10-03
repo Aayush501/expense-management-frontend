@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap';
 import useFetchExpenses from '../../data/ExpenseList';
-// import useFetchInvestments from '../../data/InvestmentList';
 import usePortfolioData from '../../data/PortfolioData';
 
 const EditTransactionForm = (props) => {
@@ -14,10 +13,7 @@ const EditTransactionForm = (props) => {
   const [date, setDate] = useState('');
   const [expectedExpense, setExpectedExpense] = useState('');
   const [customExpense, setCustomExpense] = useState('');
-  const fetchExpense = useFetchExpenses({
-    month: new Date(date).getMonth(), 
-    year: new Date(date).getFullYear()
-  });
+  const fetchExpense = useFetchExpenses();
 
   const [affectsPortfolio, setAffectsPortfolio] = useState("no");
   const [portfolioSection, setPortfolioSection] = useState("investments");
@@ -89,7 +85,7 @@ const EditTransactionForm = (props) => {
                                 <Form.Select value={expectedExpense} onChange={(e) => setExpectedExpense(e.target.value)}>
                                     <option value={''}>Choose Expense</option>
                                     {
-                                        fetchExpense.map((val) => <option value={val.expectedExpense} key={val.id}>{val.expectedExpense}</option>)
+                                        fetchExpense.map((val) => <option value={val.id} key={val.id}>{val.name}</option>)
                                     }
                                     <option value={'addNew'}>+ Add New</option>
                                 </Form.Select>
@@ -124,7 +120,7 @@ const EditTransactionForm = (props) => {
                                 <Form.Select value={expectedInvestment} onChange={(e) => setExpectedInvestment(e.target.value)}>
                                     <option value={''}>Choose Investment</option>
                                     {
-                                        fetchInvestments.investments.map((val) => <option value={val.name} key={val.serial}>{val.name}</option>)
+                                        fetchInvestments.investments.map((val) => <option value={val.name} key={val.investmentId}>{val.name}</option>)
                                     }
                                     <option value={'addNew'}>+ Add New</option>
                                 </Form.Select>

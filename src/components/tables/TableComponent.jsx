@@ -1,6 +1,4 @@
-import React, { useMemo, useCallback, useState } from 'react'
-// import React, { useContext, useMemo, useEffect, useCallback } from 'react'
-// import AppContext from '../AppContext'
+import { useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import "../../App.css";
 import { shallowEqual, useSelector } from 'react-redux';
@@ -12,80 +10,18 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
     const [showEditTransactionForm, setShowEditTransactionForm] = useState(false);
     const [editableTransaction, setEditableTransaction] = useState({serial:NaN});
   
-    // const {banks, ledgerEntries} = useContext(AppContext);
     const {banks, ledgerEntries} = useSelector((state) => ({
       banks : state.banks.value,
       ledgerEntries : state.ledger.value
     }), shallowEqual);
 
-
-    const ledgerEntriesForBank = () =>{
-      if(ledgerEntries.length>0){
-        let arr = ledgerEntries.filter(i => i.bankName===bankNameProp);
-        return arr.sort((p,c) => c.serial-p.serial);
-      }
-    }
-
-    const getTotalBalance = () => {
+    const   getTotalBalance = () => {
       return banks.length>0? banks.map(i => i.balance).reduce((p,c) => p+c): 0;
     }
 
-    const getLedgerCredit = useCallback((bank) => {
-      if(ledgerEntries.length === 0 || month==null || bank==null || year==null || month==undefined || bank==undefined || year==undefined){
-        return 0;
-      } 
-
-      let filteredEntries = ledgerEntries.filter(i => {
-        return i.bankName===bank && new Date(i.date).getMonth()==Number(month)-1 && new Date(i.date).getFullYear()==Number(year) && i.transactionType === "CREDIT"
-      });
-
-      if(filteredEntries.length==0){
-        return 0;
-      }
-
-      let amountsForFiltered = filteredEntries.map(i => i.amount);
-
-      if(amountsForFiltered.length == 0){
-        return 0;
-      }
-
-      return amountsForFiltered.reduce((p,c) => p+c);
-    }, [ledgerEntries, month, year])
-
-    const getLedgerDebit = useCallback((bank) => {
-      if(ledgerEntries.length === 0 || month==null || bank===null || year===null || month==undefined || bank==undefined || year==undefined){
-        return 0;
-      } 
-
-      let filteredEntries = ledgerEntries.filter(i => {
-        return i.bankName===bank && new Date(i.date).getMonth()==Number(month)-1 && new Date(i.date).getFullYear()==Number(year) && i.transactionType === "DEBIT"
-      });
-
-      if(filteredEntries.length==0){
-        return 0;
-      }
-
-      let amountsForFiltered = filteredEntries.map(i => i.amount);
-
-      if(amountsForFiltered.length==0){
-        return 0;
-      }
-
-      return amountsForFiltered.reduce((p,c) => p+c);
-    }, [ledgerEntries, month, year])
-
-    const ledgerData = useMemo(() => {
-      
-      const credits = Array.isArray(banks) && banks.length > 0? banks.map(i => getLedgerCredit(i.name)) : [];
-      const debits = Array.isArray(banks) && banks.length > 0? banks.map(i => getLedgerDebit(i.name)) : [];
-
-      return {
-        credits,
-        debits,
-        totalCredit: credits.reduce((p, c) => p + c, 0),
-        totalDebit: debits.reduce((p, c) => p + c, 0)
-      }
-    }, [banks, getLedgerCredit, getLedgerDebit]);
+    const credits = useSelector((state) => state.ledger.summary.credit);
+    const debits = useSelector((state) => state.ledger.summary.debit);
+    const netCreditOrDebit = useSelector((state) => state.ledger.summary.netCOrD);
 
   return (
     <>
@@ -135,41 +71,41 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
               <tr>
                 <td>Credit</td>
                 {
-                  ledgerData.credits.map((i, index) => {
-                    return <td key={index}>{i}</td>
+                  banks.map((val) => {
+                    return <td key={val.id}>{credits[val.id]? credits[val.id] : 0}</td>
                   })
                 }
                 <td>
-                  {ledgerData.totalCredit}
+                  {credits.total? credits.total : 0}
                 </td>
               </tr>
               <tr>
                 <td>Debit</td>
                 {
-                  ledgerData.debits.map((i, index) => {
-                    return <td key={index}>{i}</td>
+                  banks.map((val) => {
+                    return <td key={val.id}>{debits[val.id]? debits[val.id] : 0}</td>
                   })
                 }
                 <td>
-                  {ledgerData.totalDebit}
+                  {debits.total? debits.total : 0}
                 </td>
               </tr>
               <tr>
                 <td>Net C|D</td>
                 {
-                  banks.map((i, index) => {
-                    return <td key={index}>{ledgerData.credits[index]-ledgerData.debits[index]}</td>
+                  banks.map((val) => {
+                    return <td key={val.id}>{netCreditOrDebit[val.id] == undefined? 0 : netCreditOrDebit[val.id].amount}</td>
                   })
                 }
                 <td>
-                  {ledgerData.totalCredit - ledgerData.totalDebit}
+                  {netCreditOrDebit.total.amount? netCreditOrDebit.total.amount : 0}
                 </td>
               </tr>
             </> 
             : 
             <>
               {
-                ledgerEntriesForBank().map((i, index) => {
+                ledgerEntries.map((i, index) => {
                   return <tr key={index}> 
                     <td>{i.serial}</td>
                     <td>{new Date(i.date).toLocaleDateString("In")}</td>

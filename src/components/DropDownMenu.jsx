@@ -1,30 +1,23 @@
 import Form from 'react-bootstrap/Form';
-import AppContext from '../AppContext';
-// import { useContext, useMemo } from 'react';
-import { useMemo } from 'react';
-import Months from '../constants/Months';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLedgerForSpecificBank } from '../redux/slices/ledgerSlice';
 
 const DropDownMenu = ({setBankName}) => {
+  const dispatch = useDispatch();
+  const banks = useSelector((state) => state.banks.value);
 
   const handleValueChange = (e) => {
    setBankName(e.target.value);
+   const requiredBank = banks.find(val => val.name === e.target.value);
+   dispatch(fetchLedgerForSpecificBank({bankId : requiredBank.id}));
   }
-
-  // const { startDay, banks } = useContext(AppContext);
-  const banks = useSelector((state) => state.banks.value);
-
-  const banksOptions = useMemo(() => {
-    if(!Array.isArray(banks) || banks.length==0) return [];
-    return banks.map(i => i.name);
-  }, [banks]);
 
   return (
     <Form.Select aria-label="Month Selection" onChange={(e) => handleValueChange(e)} >
       <option key={"first-option"} value={""}>{`Select The Bank`}</option>
       {  
-        banksOptions.length>0 && banksOptions.map((i, index) => {
-            return <option key={index} value={i}>{i}</option>
+        banks.length>0 && banks.map((bank) => {
+            return <option key={bank.id} value={bank.name}>{bank.name}</option>
         })  
       }
     </Form.Select>

@@ -1,20 +1,14 @@
-// import React, { useContext } from 'react'
 import ReceivableCard from '../DebtOrReceivableCard';
-// import AppContext from '../AppContext'
-// import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { lazy, Suspense, useState } from 'react';
-// import AddReceivableForm from '../forms/AddReceivableForm';
-import usePortfolioData from '../../data/PortfolioData';
 import FormFallbacks from '../fallbacks/FormFallbacks';
+import { useSelector } from 'react-redux';
 
 const AddReceivableForm = lazy(() => import("../forms/AddReceivableForm"));
 
 const ReceivablesTable = ({status}) => {
     
-    // const { receivables } = useContext(AppContext);
-    const receivables = usePortfolioData();
-    const recievablesToShow = receivables.receivables.filter(receivable => status==="REMAINING"? receivable.status==="REMAINING" : receivable.status==="RECEIVED");
+    const receivables = status==="REMAINING"? useSelector((state) => state.receivables.remaining) : useSelector((state) => state.receivables.received);
     const [showForm, setShowForm] = useState(false);
 
     return ( 
@@ -29,11 +23,11 @@ const ReceivablesTable = ({status}) => {
                 </div>
             }   
             {
-                receivables.receivables.length > 0 ? 
+                receivables.length > 0 ? 
                 <div className='d-flex gap-3 flex-wrap'>
                 {
-                    recievablesToShow.map((debt, index) => {
-                        return <ReceivableCard key={index} serial={index+1} status={debt.status} from={debt.from} amount={debt.amount} date={new Date(debt.date)} description={debt.description} name={'receivable'} />
+                    receivables.map((val) => {
+                        return <ReceivableCard key={val.id} serial={0} status={val.status} from={val.givenTo} amount={val.amount} date={new Date(val.date)} description={val.description} name={'receivable'} />
                     })
                 }
                 </div> 

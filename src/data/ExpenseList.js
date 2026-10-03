@@ -1,10 +1,14 @@
 import { useSelector } from "react-redux";
-import { useMemo } from "react";
 
-const useFetchExpenses = ({month, year}) => {
+const useFetchExpenses = () => {
     const allDebits = useSelector((state) => state.budget.debit);
-    const requiredDebits = useMemo(() => allDebits.find((val) => val.month===month && val.year===year), [allDebits, month, year]);
-    return requiredDebits? requiredDebits.values : [];
+    const requiredDebits = allDebits.map((val) => {
+        return {
+            id : val.id,
+            name : val.expenseName
+        }
+    });
+    return requiredDebits? requiredDebits : [];
 }
 
 export default useFetchExpenses;

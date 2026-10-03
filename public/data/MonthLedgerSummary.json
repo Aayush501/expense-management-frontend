@@ -1,0 +1,30 @@
+[
+    {
+        "month" : "01",
+        "year" : "2025",
+        "credit" : {
+            "b01" : 8800,
+            "b02" : 8800,
+            "total" : 17600
+        },
+        "debit" : {
+            "b01" : 4400,
+            "b02" : 4400,
+            "total" : 8800
+        },
+        "netCOrD" : {
+            "b01" : {
+                "amount" : 4400,
+                "COrD" : "Positive"
+            },
+            "b02" : {
+                "amount" : 4400,
+                "COrD" : "Positive"
+            },
+            "total" : {
+                "amount" : 8800,
+                "COrD" : "Positive"
+            }
+        }
+    }
+]

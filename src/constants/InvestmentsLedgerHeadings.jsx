@@ -1,3 +1,3 @@
-const headings = ["S.No.", "Transaction Type", "Investment", "Amount"];
+const headings = ["S.No.", "ID", "Transaction Type", "Investment ID", "Investment Name", "Amount"];
 
 export default headings;

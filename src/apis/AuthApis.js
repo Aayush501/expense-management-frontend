@@ -1,43 +1,18 @@
-import axios from "axios"
+const loginApiCall = async(formUsername, formPassword) => {
+    const userData = await fetch('/data/UserData.json')
+    .then(async(res) => await res.json())
+    .then((data) => {
+        const matchedUser = data.filter(obj => obj.username === formUsername && obj.password === formPassword);
 
-const signup = async (formData) => await axios.post("http://localhost:8081/auth/auth/signup", formData)
-    .then(res => {
-        console.log(res.data);
-    }).catch(err => {
-        console.error(err.response.status);
-        console.error(err.response.data);
+        if (matchedUser.length === 0) {
+            alert("User Not Found With These Credentials!");
+            return null;
+        }
+        
+        return matchedUser[0];
     });
 
-const login = async (formData) => await axios.post("http://localhost:8081/auth/auth/login", formData)
-    .then(res => {
-        console.log(res.data)
-    }).catch(err => {
-        console.log(err.response.status);
-        console.log(err.response.data);
-    })
+    return userData;
+} 
 
-const addNewBank = async (formData) => await axios.post("http://localhost:8081/auth/bank/add", formData)
-    .then(res => {
-        console.log(res.data)
-    }).catch(err => {
-        console.log(err.response.status);
-        console.log(err.response.data);
-    })
-
-const getBanksData = async (formData) => await axios.get("http://localhost:8081/auth/bank/get", formData)
-    .then(res => {
-        console.log(res.data)
-    }).catch(err => {
-        console.log(err.response.status);
-        console.log(err.response.data);
-    })
-
-const changeStartDate = async (formData) => await axios.put("http://localhost:8081/auth/user/update/start", formData)
-    .then(res => {
-        console.log(res.data)
-    }).catch(err => {
-        console.log(err.response.status);
-        console.log(err.response.data);
-    })
-
-export {signup, login, addNewBank, getBanksData, changeStartDate};
+export {loginApiCall};

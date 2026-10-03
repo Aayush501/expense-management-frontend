@@ -18,7 +18,7 @@ const MarkAsSetteledForm = (props) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        You are marking this {props.name} as setteled.
+                        You are marking this {props.name} as settled.
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Do you want to add a transaction for this action?</Form.Label>
@@ -37,7 +37,7 @@ const MarkAsSetteledForm = (props) => {
                             <Form.Label>Select Bank</Form.Label>
                             <Form.Select>
                                 {
-                                    bankNames.map((val) => <option key={val}>{val}</option>)
+                                    bankNames.map((val) => <option value={val} key={val}>{val}</option>)
                                 }
                             </Form.Select>
                         </Form.Group>

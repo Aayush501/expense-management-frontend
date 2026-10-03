@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Navbar from '../components/Navigationbar';
 import '../App.css';
 import UserDashBoardHome from './UserDashBoardHome';
@@ -13,7 +13,7 @@ const UserDashboard = () => {
   return (
     <>
         <div className='navigation' >
-            <Navbar setTab={setTab} />
+            <Navbar tab={tab} setTab={setTab} />
         </div>
         <div>
         {

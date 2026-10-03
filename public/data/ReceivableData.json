@@ -1,0 +1,42 @@
+[
+    {
+        "id" : "Re01",
+        "givenTo": "Anshik",
+        "amount": 300,
+        "date": "2025-1-1",
+        "description" : "Receivable",
+        "status": "REMAINING"
+    },
+    {
+        "id" : "Re02",
+        "givenTo": "Anshik",
+        "amount": 300,
+        "date": "2025-1-1",
+        "description" : "Receivable",
+        "status": "REMAINING"
+    },
+    {
+        "id" : "Re03",
+        "givenTo": "Anshik",
+        "amount": 300,
+        "date": "2025-1-1",
+        "description" : "Receivable",
+        "status": "RECEIVED"
+    },
+    {
+        "id" : "Re04",
+        "givenTo": "Anshik",
+        "amount": 300,
+        "date": "2025-1-1",
+        "description" : "Receivable",
+        "status": "RECEIVED"
+    },
+    {
+        "id" : "Re05",
+        "givenTo": "Anshik",
+        "amount": 300,
+        "date": "2025-1-1",
+        "description" : "Receivable",
+        "status": "RECEIVED"
+    }
+]

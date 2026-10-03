@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
-// import React, { useContext, useState } from 'react'
+import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import AppContext from '../AppContext';
-import { loginSuccessful } from '../redux/slices/userSlice';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux/slices/userSlice';
+import { fetchBanks } from '../redux/slices/banksSlice';
 
 function Login() {
 
   // const {setUsername, setPassword} = useContext(AppContext);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [formUsername, setFormUsername] = useState("");
   const [formPassword, setFormPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -22,18 +21,8 @@ function Login() {
       return;
     }
 
-    fetch('/data/Users.json').then(async(res) => await res.json()).then((j) => {
-      for(let obj of j){
-        if(obj.username===formUsername && obj.password===formPassword){
-          dispatch(loginSuccessful({username: formUsername, password : formPassword}));
-        }
-        else if(obj.username===formUsername && obj.password!==formPassword){
-          alert("Invalid Password");
-        } else {
-          alert("User Not Found");
-        }
-      }
-    });
+    await dispatch(loginUser({username : formUsername, password : formPassword}));
+    await dispatch(fetchBanks({}));
   }
 
   return (

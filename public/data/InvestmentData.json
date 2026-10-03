@@ -1,0 +1,20 @@
+[
+    {
+        "investmentId" : "In01",
+        "name" : "Gold", 
+        "type" : "SIP",
+        "installmentAmount" : 200,
+        "cumulative" : 4,
+        "payment" : 800,
+        "currentValue" : 800 
+    },
+    {
+        "investmentId" : "In02",
+        "name" : "Gold", 
+        "type" : "SIP",
+        "installmentAmount" : 200,
+        "cumulative" : 4,
+        "payment" : 800,
+        "currentValue" : 800
+    }
+]

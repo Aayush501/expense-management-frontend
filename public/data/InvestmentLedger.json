@@ -1,0 +1,72 @@
+[
+    {
+        "id" : "invins001",
+        "transactionType" : "INSTALLMENT",
+        "investmentId" : "in01",
+        "investmentName" : "Gold",
+        "amount" : "200"
+    },
+    {
+        "id" : "invins002",
+        "transactionType" : "INSTALLMENT",
+        "investmentId" : "in02",
+        "investmentName" : "Gold",
+        "amount" : "200"
+    },
+    {
+        "id" : "invins003",
+        "transactionType" : "INSTALLMENT",
+        "investmentId" : "in01",
+        "investmentName" : "Gold",
+        "amount" : "200"
+    },
+    {
+        "id" : "invins004",
+        "transactionType" : "INSTALLMENT",
+        "investmentId" : "in02",
+        "investmentName" : "Gold",
+        "amount" : "200"
+    },
+    {
+        "id" : "invins005",
+        "transactionType" : "INSTALLMENT",
+        "investmentId" : "in01",
+        "investmentName" : "Gold",
+        "amount" : "200"
+    },
+    {
+        "id" : "invins006",
+        "transactionType" : "DIVESTMENT",
+        "investmentId" : "in01",
+        "investmentName" : "Gold",
+        "amount" : "20"
+    },
+    {
+        "id" : "invins007",
+        "transactionType" : "DIVESTMENT",
+        "investmentId" : "in02",
+        "investmentName" : "Gold",
+        "amount" : "20"
+    },
+    {
+        "id" : "invins008",
+        "transactionType" : "DIVESTMENT",
+        "investmentId" : "in01",
+        "investmentName" : "Gold",
+        "amount" : "20"
+    },
+    {
+        "id" : "invins009",
+        "transactionType" : "DIVESTMENT",
+        "investmentId" : "in02",
+        "investmentName" : "Gold",
+        "amount" : "20"
+    },
+    {
+        "id" : "invins010",
+        "transactionType" : "DIVESTMENT",
+        "investmentId" : "in02",
+        "investmentName" : "Gold",
+        "amount" : "20"
+    }
+]

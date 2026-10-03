@@ -1,29 +1,12 @@
-import React, { Suspense, useMemo } from 'react'
 import { Table } from 'react-bootstrap'
 import { creditHeadings, debitHeadings } from '../../constants/BudgetTableHeadings';
-import useBudgetTableData from '../../data/BudgetTableData';
+import { useSelector } from 'react-redux';
 
-const BudgetTable = ({name="", month="", year=""}) => {
+const BudgetTable = ({name=""}) => {
 
     const headings = name==="credit"? creditHeadings : debitHeadings;
-    const data = useBudgetTableData();
-
-    const showables = useMemo(() => {
-        const desiredCreditData = month.length===0 || year.length===0? {values : []} : data.credit.find((val) => { return val.month===(Number(month)-1) && val.year==year});
-
-        const desiredDebitData = month.length===0 || year.length===0? {values : []} : data.debit.find((val) => val.month===(Number(month)-1) && val.year==year)
-        
-        const desiredTotalsValue = month.length===0 || year.length===0? {values : []} : data.totals.find((val) => new Date(val.month).getMonth()===(Number(month)-1) && new Date(val.month).getFullYear()==year);
-        
-        return {
-            creditDataToShow : desiredCreditData===undefined? [] : desiredCreditData.length===0? [] : desiredCreditData.values,
-            debtiDataToShow : desiredDebitData===undefined? [] : desiredDebitData.length===0? [] :  desiredDebitData.values,
-            totalCreditAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.length===0? "" :  desiredTotalsValue.totalCreditAmount,
-            expectedExpenseAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.totalExpectedExpenseAmount,
-            actualExpenseAmount : desiredTotalsValue===undefined ? "" : desiredTotalsValue.totalActualExpenseAmount,
-            previousSavings : desiredTotalsValue===undefined ? "" : desiredTotalsValue.previousSavings
-        }
-    }, [data, month, year]);
+    const creditData = useSelector((state) => state.budget.credit);
+    const debitData = useSelector((state) => state.budget.debit);
 
   return (
     <>
@@ -39,30 +22,30 @@ const BudgetTable = ({name="", month="", year=""}) => {
                         <>
                         <tr>
                             <td>Previous Savings</td>
-                            <td>{showables.previousSavings}</td>
+                            <td>{0}</td>
                         </tr>
-                        {showables.creditDataToShow.map((val) => 
+                        {creditData.map((val) => 
                         <tr key={val.id}>
-                            <td>{val.income}</td>
+                            <td>{val.incomeName}</td>
                             <td>{val.amount}</td>
                         </tr>)}
                         <tr>
                             <td>Total</td>
-                            <td>{showables.totalCreditAmount}</td>
+                            <td>{0}</td>
                         </tr>
                         </>
                     : 
                     <>
-                    {showables.debtiDataToShow.map((val) =>     
+                    {debitData.map((val) =>     
                     <tr key={val.id}>
-                        <td>{val.expectedExpense}</td>
+                        <td>{val.expenseName}</td>
                         <td>{val.expectedAmount}</td>
                         <td>{val.actualAmount}</td>
                     </tr>)}
                     <tr>
                         <td>Total</td>
-                        <td>{showables.expectedExpenseAmount}</td>
-                        <td>{showables.actualExpenseAmount}</td>
+                        <td>{0}</td>
+                        <td>{0}</td>
                     </tr>
                     </>
                 }

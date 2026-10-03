@@ -1,11 +1,7 @@
 import { lazy, Suspense, useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-// import InvestmentsSummary from './InvestmentsSummary';
-// import DebtsTable from './tables/DebtsTable';
-// import InvestmentsLedger from './InvestmentsLedger';
 import { investments, debts, receivables } from '../constants/PortfolioTabOptions';
-// import ReceivablesTable from './tables/ReceivablesTable';
 import TableFallbacks from './fallbacks/TableFallbacks';
 
 const InvestmentsSummary = lazy(() => import("./InvestmentsSummary"));
@@ -17,7 +13,6 @@ const ReceivablesTable = lazy(() => import("./tables/ReceivablesTable"));
 const PortfolioTabs = ({name}) => {
     const options = name==="INVESTMENTS"? investments :name==="DEBTS"? debts : receivables;
     const [key, setKey] = useState(options[1]);
-
 
     return (
         <>

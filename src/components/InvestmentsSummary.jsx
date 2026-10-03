@@ -2,17 +2,13 @@ import React, { lazy, Suspense, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import Headings from '../constants/InvestmentSummaryHeadings';
 import { Button } from 'react-bootstrap';
-// import AddInvestmentForm from './forms/AddInvestmentForm';
-// import EditInvestmentForm from './forms/EditInvestmentForm';
 const AddInvestmentForm = lazy(() => import ("./forms/AddInvestmentForm"));
 const EditInvestmentForm = lazy(() => import("./forms/EditInvestmentForm"));
 import FormFallbacks from './fallbacks/FormFallbacks';
-import usePortfolioData from '../data/PortfolioData';
-
+import { useSelector } from 'react-redux';
 
 const InvestmentsSummary = () => {
-
-    const investmentData = usePortfolioData();
+    const investmentData = useSelector((state) => state.investments.value);
     const [showForm, setShowForm] = useState(false);
     const [showEditInvestment, setShowEditInvestment] = useState(false);
     const [editableInvestment, setEditableInvestment] = useState({serial:NaN});
@@ -34,10 +30,13 @@ const InvestmentsSummary = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {investmentData.investments.map((val) => 
-                        <tr key={val.serial}>
+                    {investmentData.length>0 && investmentData.map((val) => 
+                        <tr key={val.investmentId}>
                             <td>
-                                {val.serial}
+                                {0}
+                            </td>
+                            <td>
+                                {val.investmentId}
                             </td>
                             <td>
                                 {val.name}

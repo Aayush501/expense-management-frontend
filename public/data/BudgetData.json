@@ -1,0 +1,130 @@
+[
+    {
+        "month" : "01",
+        "year" : "2026",
+        "totalSavings" : 12200,
+        "credit" : [
+            {
+                "id" : "inc01",
+                "incomeName" : "salary",
+                "amount" : 50000
+            },
+            {
+                "id" : "inc02",
+                "incomeName" : "INCOME1",
+                "amount" : 10000
+            },
+            {
+                "id" : "inc03",
+                "incomeName" : "INCOME2",
+                "amount" : 10000
+            },
+            {
+                "id" : "inc04",
+                "incomeName" : "INCOME3",
+                "amount" : 10000
+            },
+            {
+                "id" : "inc05",
+                "incomeName" : "INCOME4",
+                "amount" : 10000
+            }
+        ],
+        "debit" : [
+            {
+                "id" : "Deb01",
+                "expenseName" : "expense",
+                "expectedAmount" : 2000,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb02",
+                "expenseName" : "expense1",
+                "expectedAmount" : 2000,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb03",
+                "expenseName" : "expense2",
+                "expectedAmount" : 2000,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb04",
+                "expenseName" : "expense3",
+                "expectedAmount" : 2000,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb05",
+                "expenseName" : "expense4",
+                "expectedAmount" : 2000,
+                "actualAmount" : 0
+            }
+        ]
+    },
+    {
+        "month" : "02",
+        "year" : "2026",
+        "totalSavings" : 500,
+        "credit" : [
+            {
+                "id" : "inc01",
+                "incomeName" : "salary",
+                "amount" : 123456
+            },
+            {
+                "id" : "inc02",
+                "incomeName" : "INCOME1",
+                "amount" : 1234
+            },
+            {
+                "id" : "inc03",
+                "incomeName" : "INCOME2",
+                "amount" : 2222
+            },
+            {
+                "id" : "inc04",
+                "incomeName" : "INCOME3",
+                "amount" : 2221
+            },
+            {
+                "id" : "inc05",
+                "incomeName" : "INCOME4",
+                "amount" : 8886
+            }
+        ],
+        "debit" : [
+            {
+                "id" : "Deb01",
+                "expenseName" : "expense",
+                "expectedAmount" : 299,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb02",
+                "expenseName" : "expense1",
+                "expectedAmount" : 1133,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb03",
+                "expenseName" : "expense2",
+                "expectedAmount" : 7786,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb04",
+                "expenseName" : "expense3",
+                "expectedAmount" : 5675,
+                "actualAmount" : 0
+            }, 
+            {
+                "id" : "Deb05",
+                "expenseName" : "expense4",
+                "expectedAmount" : 7765,
+                "actualAmount" : 0
+            }
+        ]
+    }
+]

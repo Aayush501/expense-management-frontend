@@ -7,8 +7,6 @@ import { loginUser } from '../redux/slices/userSlice';
 import { fetchBanks } from '../redux/slices/banksSlice';
 
 function Login() {
-
-  // const {setUsername, setPassword} = useContext(AppContext);
   const navigate = useNavigate();
   const [formUsername, setFormUsername] = useState("");
   const [formPassword, setFormPassword] = useState("");
@@ -31,9 +29,9 @@ function Login() {
         <div className='signupform'>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Username or Email</Form.Label>
               <Form.Control value={formUsername} onChange={(e) =>{ setFormUsername(e.target.value)
-              }}  type="text" placeholder='Enter Username' autoComplete='username' />
+              }}  type="text" placeholder='Enter Username Or Email' autoComplete='usernameOrEmail' />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>

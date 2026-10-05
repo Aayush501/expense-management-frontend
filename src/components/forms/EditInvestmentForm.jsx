@@ -31,14 +31,6 @@ const EditInvestmentForm = (props) => {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Installment Amount</Form.Label>
-                        <Form.Control type="text" placeholder="Enter amount of installment" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Cumulative</Form.Label>
-                        <Form.Control type="text" placeholder="Enter number of installments done till date" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>Current Value</Form.Label>
                         <Form.Control type="text" placeholder="Enter Current Cumulative Balance" />
                     </Form.Group>

@@ -52,10 +52,6 @@ const AddIncomeForm = (props) => {
                                 <Form.Control type='date'/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Amount</Form.Label>
-                                <Form.Control type='text' placeholder="enter amount"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control type='text' placeholder="Give description to this transaction"/>
                             </Form.Group>

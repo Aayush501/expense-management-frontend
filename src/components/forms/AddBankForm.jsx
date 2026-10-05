@@ -23,6 +23,14 @@ const AddBankForm = (props) => {
                         <Form.Label>Name Of Bank</Form.Label>
                         <Form.Control type="text" placeholder="Enter name of the bank" />
                     </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                        <Form.Label>Enter Linked Email</Form.Label>
+                        <Form.Control type="email" placeholder="Enter Linked Email" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+                        <Form.Label>Linked Phone Number</Form.Label>
+                        <Form.Control type="tel" placeholder="Enter Linked Phone Number" />
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Initial Balance</Form.Label>
                         <Form.Control type='text' placeholder='Initial balance in the account'/>

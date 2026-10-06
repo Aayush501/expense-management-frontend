@@ -21,7 +21,13 @@ export const loginUser = createAsyncThunk(
 
 const initialState = {
     /** @type {User} */
-    value : {}
+    value : {
+        username : "",
+        firstName : "",
+        lastName : "",
+        email : "",
+        phone : ""
+    }
 }
 
 export const userSlice = createSlice({

@@ -66,9 +66,17 @@ export const ledgerSlice = createSlice({
             state.summary = {
                 month : "",
                 year : "",
-                credit : {},
-                debit : {},
-                netCOrD : {}
+                credit : {
+                    total : 0
+                },
+                debit : {
+                    total : 0
+                },
+                netCOrD : {
+                    total : {
+                        amount : 0
+                    }
+                }
             }
         }
     },

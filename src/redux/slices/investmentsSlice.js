@@ -40,6 +40,7 @@ export const investmentsSlice = createSlice({
     reducers : {
         emptyInvestments : (state) => {
             state.value = [];
+            state.ledger = [];
         }
     },
     extraReducers : (builder) => {

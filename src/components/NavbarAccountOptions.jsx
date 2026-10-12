@@ -8,12 +8,14 @@ import { emptyInvestments } from '../redux/slices/investmentsSlice';
 import { emptyLedger } from '../redux/slices/ledgerSlice';
 import { emptyReceivables } from '../redux/slices/receivablesSlice';
 import { CircleUserRound } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 
 const NavbarAccountOptions = () => {
 
     const username = useSelector((state) => state.user.value.firstName);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(emptyUser());
@@ -28,7 +30,7 @@ const NavbarAccountOptions = () => {
     const popover = (
         <Popover id="popover-basic" style={{ width: '18rem' }} >
             <Popover.Body style={{display : 'flex', flexDirection : 'column', gap : '1rem' }}>
-                <Button variant="light">See Profile</Button>
+                <Button variant="light" onClick={() => navigate('/user/profile')}>See Profile</Button>
                 <Button variant="light" onClick={() => handleLogout()}>Logout</Button>
             </Popover.Body>
         </Popover>

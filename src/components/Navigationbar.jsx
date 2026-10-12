@@ -1,12 +1,14 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useSelector } from 'react-redux';
 import NavbarAccountOptions from './NavbarAccountOptions';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const NavigationBar = ({tab, setTab}) => {
+const NavigationBar = () => {
 
-    const username = useSelector((state) => state.user.value.username);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const currentPath = location.pathname;
     const chosenTabStyle = {fontWeight : 'bold', color:'white'};
 
   return (
@@ -14,10 +16,10 @@ const NavigationBar = ({tab, setTab}) => {
         <Navbar bg="primary">
             <Container>
                 <Nav className="me-auto">
-                    <Nav.Item className='mx-1' onClick={() => {setTab("HOME");}} style={tab==="HOME"? chosenTabStyle : {color:'white'}} >Home</Nav.Item>
-                    <Nav.Item className='mx-1' onClick={() => {setTab("LEDGER");}} style={tab==="LEDGER"? chosenTabStyle : {color:'white'}}>Ledger</Nav.Item>
-                    <Nav.Item className='mx-1' onClick={() => {setTab("PORTFOLIO");}} style={tab==="PORTFOLIO"? chosenTabStyle : {color:'white'}}>Portfolio</Nav.Item>
-                    <Nav.Item className='mx-1' onClick={() => {setTab("BUDGET");}} style={tab==="BUDGET"? chosenTabStyle : {color:'white'}}>Budget</Nav.Item>
+                    <Nav.Item className='mx-1' onClick={() => navigate('/')} style={currentPath==='/'? chosenTabStyle : {color:'white'}} >Home</Nav.Item>
+                    <Nav.Item className='mx-1' onClick={() => navigate('/ledger')} style={currentPath==='/ledger'? chosenTabStyle : {color:'white'}}>Ledger</Nav.Item>
+                    <Nav.Item className='mx-1' onClick={() => navigate('/portfolio')} style={currentPath==='/portfolio'? chosenTabStyle : {color:'white'}}>Portfolio</Nav.Item>
+                    <Nav.Item className='mx-1' onClick={() => navigate('/budget')} style={currentPath==='/budget'? chosenTabStyle : {color:'white'}}>Budget</Nav.Item>
                 </Nav>
                 <NavbarAccountOptions />
             </Container>

@@ -1,17 +1,38 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
 import Signup from './pages/Signup';
+import UserProfilePage from './pages/UserProfilePage';
+import Ledger from './pages/Ledger';
+import Portfolio from './pages/Portfolio';
+import Budget from './pages/Budget';
+import NavigationBar from './components/Navigationbar';
+import { useSelector } from 'react-redux';
+import Login from './pages/Login';
+import UserDashBoardHome from './pages/UserDashBoardHome';
 
 
 function App() {
 
+  const username = useSelector((state) => state.user.value.username);
+
   return (
     <>
+      {username==null || username.trim()===""? <Login/> 
+        : 
+      <>
+        <div className='navigation' >
+            <NavigationBar />
+        </div>
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<UserDashBoardHome/>} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/user/profile' element={<UserProfilePage />} />
+          <Route path='/ledger' element={<Ledger />} />
+          <Route path='/portfolio' element={<Portfolio />} />
+          <Route path='/budget' element={<Budget />} />
         </Routes>
+      </>
+      }
     </>
   )
 }

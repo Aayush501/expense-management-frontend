@@ -2,9 +2,6 @@ import { Form } from "react-bootstrap"
 
 const DatePicker = ({SelectionLabel, selectionType, selectedDate, setDate}) => {
 
-    console.log(selectedDate)
-    console.log(typeof selectedDate)
-
   return (
     <div>
         <Form>

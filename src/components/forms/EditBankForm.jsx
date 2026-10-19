@@ -60,5 +60,3 @@ const EditBankForm = ({show, onHide, bankId, bankName, linkedPhoneNumber, linked
 }
 
 export default EditBankForm;
-
-// id, name, linkedPhoneNumber, linkedEmail

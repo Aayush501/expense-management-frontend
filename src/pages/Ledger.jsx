@@ -3,23 +3,11 @@ import TableComponent from '../components/tables/TableComponent';
 import { Button } from 'react-bootstrap';
 import DropDownMenu from '../components/DropDownMenu';
 import AddTransactionForm from '../components/forms/AddTransactionForm';
-import { useDispatch } from 'react-redux';
-import { CalculatedDates } from '../data/DatesAndTimesCalculation';
-import { fetchBudget } from '../redux/slices/budgetSlice';
-import { fetchInvestmentsForSpecificUser } from '../redux/slices/investmentsSlice';
 
 const Ledger = () => {
 
   const [bankName, setBankName] = useState("");
   const [showForm, setShowForm] = useState(false);
-
-  const dispatch = useDispatch();
-
-  const currentMonth = CalculatedDates.currentMonth;
-  const currentYear = CalculatedDates.currentYear;
-
-  dispatch(fetchBudget({month : currentMonth, year : currentYear}));
-  dispatch(fetchInvestmentsForSpecificUser({}));
 
   return (
     <>

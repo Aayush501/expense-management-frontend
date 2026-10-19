@@ -1,8 +1,8 @@
 import ReceivableCard from '../DebtOrReceivableCard';
 import { Button } from 'react-bootstrap';
 import { lazy, Suspense, useState } from 'react';
-import FormFallbacks from '../fallbacks/FormFallbacks';
 import { useSelector } from 'react-redux';
+import ItemFallback from '../fallbacks/ItemFallback';
 
 const AddReceivableForm = lazy(() => import("../forms/AddReceivableForm"));
 
@@ -17,7 +17,7 @@ const ReceivablesTable = ({status}) => {
                 status==="REMAINING" && 
                 <div className='container my-2'>
                     <Button variant="primary" onClick={() =>setShowForm(true)}>+ Add Receivable</Button>
-                    <Suspense fallback={<FormFallbacks />}>
+                    <Suspense fallback={<ItemFallback item={"Receivable Form"} />}>
                         <AddReceivableForm show={showForm} onHide={() => setShowForm(false)} />
                     </Suspense>
                 </div>

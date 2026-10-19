@@ -31,6 +31,7 @@ const NavbarAccountOptions = () => {
         <Popover id="popover-basic" style={{ width: '18rem' }} >
             <Popover.Body style={{display : 'flex', flexDirection : 'column', gap : '1rem' }}>
                 <Button variant="light" onClick={() => navigate('/user/profile')}>See Profile</Button>
+                <Button variant="light" onClick={() => navigate('/user/banks')}>Bank Management</Button>
                 <Button variant="light" onClick={() => handleLogout()}>Logout</Button>
             </Popover.Body>
         </Popover>

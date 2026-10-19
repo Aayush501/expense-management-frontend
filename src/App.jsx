@@ -9,6 +9,7 @@ import NavigationBar from './components/Navigationbar';
 import { useSelector } from 'react-redux';
 import Login from './pages/Login';
 import UserDashBoardHome from './pages/UserDashBoardHome';
+import BankManagement from './pages/BankManagement';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/ledger' element={<Ledger />} />
           <Route path='/portfolio' element={<Portfolio />} />
           <Route path='/budget' element={<Budget />} />
+          <Route path='/user/banks' element={<BankManagement />} />
         </Routes>
       </>
       }

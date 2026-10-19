@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import TableComponent from '../components/tables/TableComponent';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Button from 'react-bootstrap/Button';
-import AddBankForm from '../components/forms/AddBankForm';
 import DatePicker from '../components/forms/DatePicker';
 import { CalculatedDates } from '../data/DatesAndTimesCalculation';
 import { useDispatch } from 'react-redux';
@@ -13,7 +11,6 @@ const UserDashBoardHome = () => {
 
   const [month, setMonth] = useState(CalculatedDates.currentMonth);
   const [year, setYear] = useState(CalculatedDates.currentYear);
-  const [showBankForm,setShowBankForm] = useState(false);
   
   const setMonthAndYear = (monthYear) => {
     setMonth(monthYear.substring(5));
@@ -28,10 +25,6 @@ const UserDashBoardHome = () => {
 
   return (
     <>
-    <div className='container my-2'>
-      <Button variant="primary" onClick={() => setShowBankForm(true)}>+ Add New Bank</Button>
-      <AddBankForm show={showBankForm} onHide={() => setShowBankForm(false)} />
-    </div>
     <div className='container my-3'>
       <Tabs
         defaultActiveKey="balancesummary"

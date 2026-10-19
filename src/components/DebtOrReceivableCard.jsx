@@ -2,16 +2,13 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Button } from 'react-bootstrap';
 import { lazy, Suspense, useState } from 'react';
-import FormFallbacks from './fallbacks/FormFallbacks';
-// import EditDebtForm from './forms/EditDebtForm';
-// import EditReceivableForm from './forms/EditReceivableForm';
-// import MarkAsSetteledForm from './forms/MarkAsSetteledForm';
+import ItemFallback from './fallbacks/ItemFallback';
 
 const EditDebtForm = lazy(() => import("./forms/EditDebtForm"));
 const EditReceivableForm = lazy(() => import("./forms/EditReceivableForm"));
 const MarkAsSetteledForm = lazy(() => import("./forms/MarkAsSetteledForm"));
 
-const DebtCard = ({serial, from, amount, date, description, status, name}) => {
+const DebtOrReceivableCard = ({serial, from, amount, date, description, status, name}) => {
 
   const [showEditDebt, setShowEditDebt] = useState(false);
   const [showEditReceivable, setShowEditReceivable] = useState(false);
@@ -37,17 +34,17 @@ const DebtCard = ({serial, from, amount, date, description, status, name}) => {
           }
         </ListGroup>
     </Card>
-    <Suspense fallback={<FormFallbacks />}>
+    <Suspense fallback={<ItemFallback item={"Edit Debt Form"} />}>
       <EditDebtForm serial={serial} show={showEditDebt} onHide={()=>setShowEditDebt(false)} />
     </Suspense>
-    <Suspense fallback={<FormFallbacks />}>
+    <Suspense fallback={<ItemFallback item={"Edit Receivable Form"} />}>
       <EditReceivableForm serial={serial} show={showEditReceivable} onHide={()=>setShowEditReceivable(false)} />
     </Suspense>
-    <Suspense fallback={<FormFallbacks />}>
+    <Suspense fallback={<ItemFallback item={"Mark As Setteled Form"} />}>
       <MarkAsSetteledForm show={showMarkSetteled} onHide={()=>setShowMarkSettled(false)} name={name} />
     </Suspense>
     </>
   ) 
 }
 
-export default DebtCard
+export default DebtOrReceivableCard;

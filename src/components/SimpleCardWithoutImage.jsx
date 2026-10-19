@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap'
 
-const BankCard = ({title, subtitle, texts, links}) => {
+const SimpleCardWithoutImage = ({title, subtitle, texts, links}) => {
     return (
         <>
             <Card style={{ width: '18rem' }}>
@@ -19,4 +19,4 @@ const BankCard = ({title, subtitle, texts, links}) => {
     )
 }
 
-export default BankCard
+export default SimpleCardWithoutImage;

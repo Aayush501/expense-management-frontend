@@ -1,13 +1,13 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap';
 
-const FormFallbacks = () => {
+const ItemFallbacks = ({item}) => {
     return (
         <>
         <Modal>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Please Wait While Form Is Opening
+                    Please Wait While {item} Is Opening
                 </Modal.Title>
             </Modal.Header>
         </Modal>
@@ -15,4 +15,4 @@ const FormFallbacks = () => {
     )
 }
 
-export default React.memo(FormFallbacks);
+export default React.memo(ItemFallbacks);

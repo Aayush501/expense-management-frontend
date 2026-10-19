@@ -4,8 +4,8 @@ import Headings from '../constants/InvestmentSummaryHeadings';
 import { Button } from 'react-bootstrap';
 const AddInvestmentForm = lazy(() => import ("./forms/AddInvestmentForm"));
 const EditInvestmentForm = lazy(() => import("./forms/EditInvestmentForm"));
-import FormFallbacks from './fallbacks/FormFallbacks';
 import { useSelector } from 'react-redux';
+import ItemFallback from './fallbacks/ItemFallback';
 
 const InvestmentsSummary = () => {
     const investmentData = useSelector((state) => state.investments.value);
@@ -17,7 +17,7 @@ const InvestmentsSummary = () => {
         <>
             <div className='container my-2'>
                 <Button variant="primary" onClick={() =>setShowForm(true)}>+ Add Investment</Button> 
-                <Suspense fallback={<FormFallbacks/>}>
+                <Suspense fallback={<ItemFallback item={"Add Investment Form"}/>}>
                     <AddInvestmentForm show={showForm} onHide={() => setShowForm(false)} />
                 </Suspense>
             </div>
@@ -63,7 +63,7 @@ const InvestmentsSummary = () => {
                     )}
                 </tbody>
             </Table>
-            <Suspense fallback={<FormFallbacks />}>
+            <Suspense fallback={<ItemFallback item={"Edit Investment Form"} />}>
                 <EditInvestmentForm show={showEditInvestment} onHide={() => setShowEditInvestment(false)} investment={editableInvestment} />
             </Suspense>
         </>

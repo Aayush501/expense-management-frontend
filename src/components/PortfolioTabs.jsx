@@ -2,7 +2,7 @@ import { lazy, Suspense, useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { investments, debts, receivables } from '../constants/PortfolioTabOptions';
-import TableFallbacks from './fallbacks/TableFallbacks';
+import ItemFallback from './fallbacks/ItemFallback';
 
 const InvestmentsSummary = lazy(() => import("./InvestmentsSummary"));
 const DebtsTable = lazy(() => import("./tables/DebtsTable"));
@@ -25,15 +25,15 @@ const PortfolioTabs = ({name}) => {
                 <Tab eventKey={`${options[1]}`} title={`${options[1]}`}>
                     {
                         name==="INVESTMENTS"? 
-                        <Suspense fallback={<TableFallbacks />}>
+                        <Suspense fallback={<ItemFallback item={"Investment Summary"} />}>
                             <InvestmentsSummary/> 
                         </Suspense>
                         :name==="DEBTS"? 
-                        <Suspense fallback={<TableFallbacks />}>
+                        <Suspense fallback={<ItemFallback item={"Debts Table"} />}>
                             <DebtsTable statusProp={"REMAINING"} /> 
                         </Suspense>
                         :
-                        <Suspense fallback={<TableFallbacks/>}>
+                        <Suspense fallback={<ItemFallback item={"Receivables Table"}/>}>
                             <ReceivablesTable status={"REMAINING"} />
                         </Suspense>
                     }
@@ -41,15 +41,15 @@ const PortfolioTabs = ({name}) => {
                 <Tab eventKey={`${options[2]}`} title={`${options[2]}`}>
                     {
                         name==="INVESTMENTS"? 
-                        <Suspense fallback={<TableFallbacks />}>
+                        <Suspense fallback={<ItemFallback item={"Investment Ledger"} />}>
                             <InvestmentsLedger/> 
                         </Suspense>
                         :name==="DEBTS"? 
-                        <Suspense fallback={<TableFallbacks />}>
+                        <Suspense fallback={<ItemFallback item={"Debts Table"} />}>
                             <DebtsTable statusProp={"PAID"} /> 
                         </Suspense>
                         :
-                        <Suspense fallback={<TableFallbacks/>}>
+                        <Suspense fallback={<ItemFallback item={"Receivables table"}/>}>
                             <ReceivablesTable status={"RECEIVED"} />
                         </Suspense>
                     }

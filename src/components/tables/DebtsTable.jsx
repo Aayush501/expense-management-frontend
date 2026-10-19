@@ -1,8 +1,8 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import DebtCard from '../DebtOrReceivableCard';
+import DebtOrReceivableCard from '../DebtOrReceivableCard';
 import { Button } from 'react-bootstrap';
-import FormFallbacks from '../fallbacks/FormFallbacks';
 import { useSelector } from 'react-redux';
+import ItemFallback from '../fallbacks/ItemFallback';
 const AddDebtForm = lazy(() => import("../forms/AddDebtForm"));
 
 const DebtsTable = ({statusProp}) => {
@@ -16,7 +16,7 @@ const DebtsTable = ({statusProp}) => {
         statusProp==="REMAINING" && 
         <div className='container my-2'>
           <Button variant="primary" onClick={() =>setShowForm(true)}>+ Add Debt</Button> 
-          <Suspense fallback={<FormFallbacks />}>
+          <Suspense fallback={<ItemFallback item={"Debt Form"} />}>
             <AddDebtForm show={showForm} onHide={() => setShowForm(false)} />
           </Suspense>
         </div>
@@ -26,7 +26,7 @@ const DebtsTable = ({statusProp}) => {
         <div className='d-flex gap-3 flex-wrap'>
           {
             debts.map((debt) => {
-              return <DebtCard key={debt.debtId} serial={0} status={debt.status} from={debt.takenFrom} amount={debt.amount} date={new Date(debt.date)} description={debt.description} name={'debt'} />
+              return <DebtOrReceivableCard key={debt.debtId} serial={0} status={debt.status} from={debt.takenFrom} amount={debt.amount} date={new Date(debt.date)} description={debt.description} name={'debt'} />
             })
           }
         </div>

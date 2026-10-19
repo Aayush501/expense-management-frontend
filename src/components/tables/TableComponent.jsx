@@ -43,6 +43,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
                 :
                 <>
                   <th>S.No.</th>
+                  <th>Transaction Id</th>
                   <th>Date</th>
                   <th>Description</th>
                   <th>Amount</th>
@@ -106,13 +107,14 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
             <>
               {
                 ledgerEntries.map((i, index) => {
-                  return <tr key={index}> 
-                    <td>{i.serial}</td>
+                  return <tr key={i.transactionId}> 
+                    <td>{index + 1}</td>
+                    <td>{i.transactionId}</td>
                     <td>{new Date(i.date).toLocaleDateString("In")}</td>
                     <td>{i.description}</td>
                     <td>{i.amount}</td>
                     <td>{i.transactionType}</td>
-                    <td>{i.balance}</td>
+                    <td>{i.balanceAfterThisTransaction}</td>
                     <td><Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditTransactionForm(true); setEditableTransaction(i)}}>edit?</Button></td>
                   </tr>
                 })

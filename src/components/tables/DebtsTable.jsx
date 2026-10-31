@@ -3,6 +3,7 @@ import DebtOrReceivableCard from '../DebtOrReceivableCard';
 import { Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import ItemFallback from '../fallbacks/ItemFallback';
+import { texts } from '../../application-texts/ApplicationTexts';
 const AddDebtForm = lazy(() => import("../forms/AddDebtForm"));
 
 const DebtsTable = ({statusProp}) => {
@@ -15,7 +16,7 @@ const DebtsTable = ({statusProp}) => {
       {
         statusProp==="REMAINING" && 
         <div className='container my-2'>
-          <Button variant="primary" onClick={() =>setShowForm(true)}>+ Add Debt</Button> 
+          <Button variant="primary" onClick={() =>setShowForm(true)}>{texts.debtsTable.addDebtButton}</Button> 
           <Suspense fallback={<ItemFallback item={"Debt Form"} />}>
             <AddDebtForm show={showForm} onHide={() => setShowForm(false)} />
           </Suspense>
@@ -31,7 +32,9 @@ const DebtsTable = ({statusProp}) => {
           }
         </div>
         :
-        "Nothing To Show Here !!!"
+        <>
+          {texts.debtsTable.nothingToShowHere}
+        </>
       }
     </>
   )

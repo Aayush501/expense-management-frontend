@@ -1,6 +1,7 @@
 import { FileUser } from 'lucide-react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import { texts } from '../application-texts/ApplicationTexts';
 
 const UserProfilePage = () => {
 
@@ -17,14 +18,14 @@ const UserProfilePage = () => {
                         <Card.Title><h2><strong>{userData.username}</strong></h2></Card.Title>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
-                        <ListGroup.Item><b>Full Name : </b>{userData.firstName} {userData.lastName}</ListGroup.Item>
-                        <ListGroup.Item><b>Email : </b>{userData.email}</ListGroup.Item>
-                        <ListGroup.Item><b>Phone : </b>{userData.phone}</ListGroup.Item>
+                        <ListGroup.Item><b>{texts.userProfilePage.fullNameLabel}</b>{userData.firstName} {userData.lastName}</ListGroup.Item>
+                        <ListGroup.Item><b>{texts.userProfilePage.emailLabel}</b>{userData.email}</ListGroup.Item>
+                        <ListGroup.Item><b>{texts.userProfilePage.phoneLabel}</b>{userData.phone}</ListGroup.Item>
                     </ListGroup>
                     <Card.Body className='d-flex gap-2 justify-content-center '>
-                        <Button variant='warning'>Update Profile</Button>
-                        <Button variant='warning'>Change Password</Button>
-                        <Button variant='danger'>Delete Account</Button>
+                        <Button variant='warning'>{texts.userProfilePage.updateProfileButton}</Button>
+                        <Button variant='warning'>{texts.userProfilePage.changePasswordButton}</Button>
+                        <Button variant='danger'>{texts.userProfilePage.deleteAccountButton}</Button>
                     </Card.Body>
                 </Card>
             </div>

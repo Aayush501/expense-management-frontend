@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const Signup = () => {
 
@@ -11,34 +12,34 @@ const Signup = () => {
             <div className='signupform'>
                 <Form >
                     <Form.Group className="mb-3" controlId="formBasicFirstName">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control type="text" placeholder='Enter First Name' autoComplete='FirstName' />
+                        <Form.Label>{texts.signupPage.firstNameLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.signupPage.firstNamePlaceholder} autoComplete='FirstName' />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicLastName">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="text" placeholder='Enter Last Name' autoComplete='LastName' />
+                        <Form.Label>{texts.signupPage.lastNameLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.signupPage.lastNamePlaceholder} autoComplete='LastName' />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicUsername">
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" placeholder='Enter Username' autoComplete='username' />
+                        <Form.Label>{texts.signupPage.usernameLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.signupPage.usernamePlaceholder} autoComplete='username' />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" autoComplete='current-password' placeholder="Password" />
+                        <Form.Label>{texts.signupPage.passwordLabel}</Form.Label>
+                        <Form.Control type="password" placeholder={texts.signupPage.passwordPlaceholder} autoComplete='current-password' />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" autoComplete='Enter Email' placeholder="Email" />
+                        <Form.Label>{texts.signupPage.emailLabel}</Form.Label>
+                        <Form.Control type="email"  placeholder={texts.signupPage.emailPlaceholder} autoComplete='Enter Email' />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPhone">
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control type="tel" autoComplete='Enter Phone Number' placeholder="Phone" />
+                        <Form.Label>{texts.signupPage.phoneLabel}</Form.Label>
+                        <Form.Control type="tel" placeholder={texts.signupPage.phonePlaceholder} autoComplete='Enter Phone Number' />
                     </Form.Group>
                     <Button variant="primary" type="submit" >
-                        Submit
+                        {texts.signupPage.submitButton}
                     </Button>
                     <Button className='mx-2' variant="warning" type="button" onClick={() => navigate("/")} >
-                        Login
+                        {texts.signupPage.loginButton}
                     </Button>
                 </Form>
             </div>

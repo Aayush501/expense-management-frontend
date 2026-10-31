@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap"
 import useFetchBanks from "../../data/FetchBanks";
+import { texts } from "../../application-texts/ApplicationTexts";
 
 const AddExpectedExpenseForm = (props) => {
 
@@ -17,30 +18,30 @@ const AddExpectedExpenseForm = (props) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        + Add Expected Expense
+                        {texts.expectedExpenseForm.title}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Expected Expense:</Form.Label>
-                            <Form.Control type="text" placeholder="Give name for this expected expense" />
+                            <Form.Label>{texts.expectedExpenseForm.expenseNameLabel}</Form.Label>
+                            <Form.Control type="text" placeholder={texts.expectedExpenseForm.expenseNamePlaceholder} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Expected Amount</Form.Label>
-                            <Form.Control type='text' placeholder='Enter expected amount'/>
+                            <Form.Label>{texts.expectedExpenseForm.expectedAmountLabel}</Form.Label>
+                            <Form.Control type='text' placeholder={texts.expectedExpenseForm.expectedAmountPlaceholder}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Do you want to add a transaction for this action?</Form.Label>
+                            <Form.Label>{texts.expectedExpenseForm.addTransactionLabel}</Form.Label>
                             <Form.Select value={asTransaction} onChange={(e)=>setAsTransaction(e.target.value)} >
-                                <option value={'yes'}>Yes</option>
-                                <option value={'no'}>No</option>
+                                <option value={'yes'}>{texts.expectedExpenseForm.yesOption}</option>
+                                <option value={'no'}>{texts.expectedExpenseForm.noOption}</option>
                             </Form.Select>
                         </Form.Group>
                             {   asTransaction==='yes' &&
                                 <>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                    <Form.Label>Select Bank</Form.Label>
+                                    <Form.Label>{texts.expectedExpenseForm.selectBankLabel}</Form.Label>
                                     <Form.Select>
                                         {
                                             bankNames.map((val) => <option key={val}>{val}</option>)
@@ -48,20 +49,20 @@ const AddExpectedExpenseForm = (props) => {
                                     </Form.Select>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label>Date</Form.Label>
+                                    <Form.Label>{texts.expectedExpenseForm.dateLabel}</Form.Label>
                                     <Form.Control type='date'/>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label>Description</Form.Label>
-                                    <Form.Control type='text' placeholder="Give description to this transaction"/>
+                                    <Form.Label>{texts.expectedExpenseForm.descriptionLabel}</Form.Label>
+                                    <Form.Control type='text' placeholder={texts.expectedExpenseForm.descriptionPlaceholder}/>
                                 </Form.Group>
                                 </>
                             }
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant='success' onClick={props.onHide}>Submit</Button>
-                    <Button variant='danger' onClick={props.onHide}>Cancel</Button>
+                    <Button variant='success' onClick={props.onHide}>{texts.expectedExpenseForm.submitButton}</Button>
+                    <Button variant='danger' onClick={props.onHide}>{texts.expectedExpenseForm.cancelButton}</Button>
                 </Modal.Footer>
             </Modal>
         </>

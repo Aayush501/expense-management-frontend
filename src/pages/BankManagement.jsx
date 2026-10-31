@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import BankCard from "../components/SimpleCardWithoutImage";
 import EditBankForm from "../components/forms/EditBankForm";
 import { useNavigate } from "react-router-dom";
+import { texts } from "../application-texts/ApplicationTexts";
 
 const BankManagement = () => {
     const navigate = useNavigate();
@@ -20,10 +21,10 @@ const BankManagement = () => {
     return (
         <>
             <div className='container my-2'>
-                <h6 onClick={() => navigate(-1)}>{`< Back`}</h6>
+                <h6 onClick={() => navigate(-1)}>{texts.bankManagementPage.backButton}</h6>
             </div>
             <div className='container my-2'>
-                <Button variant="primary" onClick={() => setShowAddBankForm(true)}>+ Add New Bank</Button>
+                <Button variant="primary" onClick={() => setShowAddBankForm(true)}>{texts.bankManagementPage.addNewBankButton}</Button>
                 <AddBankForm show={showAddBankForm} onHide={() => setShowAddBankForm(false)} />
             </div>
             <div className='d-flex gap-3 flex-wrap container'>

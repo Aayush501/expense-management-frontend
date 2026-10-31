@@ -1,7 +1,6 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import Signup from './pages/Signup';
-import UserProfilePage from './pages/UserProfilePage';
 import Ledger from './pages/Ledger';
 import Portfolio from './pages/Portfolio';
 import Budget from './pages/Budget';
@@ -10,6 +9,7 @@ import { useSelector } from 'react-redux';
 import Login from './pages/Login';
 import UserDashBoardHome from './pages/UserDashBoardHome';
 import BankManagement from './pages/BankManagement';
+import UserProfilePage from './pages/UserProfile';
 
 
 function App() {

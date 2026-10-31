@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import useFetchBanks from "../../data/FetchBanks";
+import { texts } from "../../application-texts/ApplicationTexts";
 
 const AddReceivableForm = (props) => {
     const [asTransaction, setAsTransaction] = useState('no');
@@ -15,38 +16,38 @@ const AddReceivableForm = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    + Add New Receivable
+                    {texts.addReceivableForm.title}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Choose Date</Form.Label>
+                        <Form.Label>{texts.addReceivableForm.chooseDateLabel}</Form.Label>
                         <Form.Control type="date" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Description:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Description For The Receivable" />
+                        <Form.Label>{texts.addReceivableForm.descriptionLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addReceivableForm.descriptionPlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                        <Form.Label>Given To</Form.Label>
-                        <Form.Control type="text" placeholder="Enter the name of the debtor" />
+                        <Form.Label>{texts.addReceivableForm.givenToLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addReceivableForm.givenToPlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Receivable Amount</Form.Label>
-                        <Form.Control type="text" placeholder="Enter amount of receivable" />
+                        <Form.Label>{texts.addReceivableForm.receivableAmountLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addReceivableForm.receivableAmountPlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Do you want to add a transaction for this action?</Form.Label>
+                        <Form.Label>{texts.addReceivableForm.addTransactionLabel}</Form.Label>
                         <Form.Select value={asTransaction} onChange={(e)=>setAsTransaction(e.target.value)} >
-                            <option value={'yes'}>Yes</option>
-                            <option value={'no'}>No</option>
+                            <option value={'yes'}>{texts.addReceivableForm.yesOption}</option>
+                            <option value={'no'}>{texts.addReceivableForm.noOption}</option>
                         </Form.Select>
                     </Form.Group>
                     {   asTransaction==='yes' &&
                         <>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Select Bank</Form.Label>
+                            <Form.Label>{texts.addReceivableForm.selectBankLabel}</Form.Label>
                             <Form.Select>
                                 {
                                     bankNames.map((val) => <option key={val}>{val}</option>)
@@ -58,8 +59,8 @@ const AddReceivableForm = (props) => {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='success' onClick={props.onHide}>Submit</Button>
-                <Button variant='danger' onClick={props.onHide}>Cancel</Button>
+                <Button variant='success' onClick={props.onHide}>{texts.addReceivableForm.submitButton}</Button>
+                <Button variant='danger' onClick={props.onHide}>{texts.addReceivableForm.cancelButton}</Button>
             </Modal.Footer>
         </Modal>
     </>

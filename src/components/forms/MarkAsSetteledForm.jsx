@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap"
 import useFetchBanks from "../../data/FetchBanks";
+import { texts } from "../../application-texts/ApplicationTexts";
 
 
 const MarkAsSetteledForm = (props) => {
@@ -18,13 +19,13 @@ const MarkAsSetteledForm = (props) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        You are marking this {props.name} as settled.
+                        {texts.addSettlementForm.title} {props.name}
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Do you want to add a transaction for this action?</Form.Label>
+                                <Form.Label>{texts.addSettlementForm.addTransactionLabel}</Form.Label>
                                 <Form.Select value={asTransaction} onChange={(e)=>setAsTransaction(e.target.value)} >
-                                    <option value={'yes'}>Yes</option>
-                                    <option value={'no'}>No</option>
+                                    <option value={'yes'}>{texts.addSettlementForm.yesOption}</option>
+                                    <option value={'no'}>{texts.addSettlementForm.noOption}</option>
                                 </Form.Select>
                             </Form.Group>
                         </Form>
@@ -34,7 +35,7 @@ const MarkAsSetteledForm = (props) => {
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Select Bank</Form.Label>
+                            <Form.Label>{texts.addSettlementForm.selectBankLabel}</Form.Label>
                             <Form.Select>
                                 {
                                     bankNames.map((val) => <option value={val} key={val}>{val}</option>)
@@ -42,23 +43,23 @@ const MarkAsSetteledForm = (props) => {
                             </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Date</Form.Label>
+                            <Form.Label>{texts.addSettlementForm.dateLabel}</Form.Label>
                             <Form.Control type='date'/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Amount</Form.Label>
-                            <Form.Control type='text' placeholder="enter amount"/>
+                            <Form.Label>{texts.addSettlementForm.amountLabel}</Form.Label>
+                            <Form.Control type='text' placeholder={texts.addSettlementForm.amountPlaceholder}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type='text' placeholder="Give description to this transaction"/>
+                            <Form.Label>{texts.addSettlementForm.descriptionLabel}</Form.Label>
+                            <Form.Control type='text' placeholder={texts.addSettlementForm.descriptionPlaceholder}/>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 }
                 <Modal.Footer>
-                    <Button variant='success' onClick={props.onHide}>Submit</Button>
-                    <Button variant='danger' onClick={props.onHide}>Cancel</Button>
+                    <Button variant='success' onClick={props.onHide}>{texts.addSettlementForm.submitButton}</Button>
+                    <Button variant='danger' onClick={props.onHide}>{texts.addSettlementForm.cancelButton}</Button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -1,7 +1,8 @@
 import { Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { texts } from '../application-texts/ApplicationTexts';
 
-const TotalSavings = ({month, year}) => {
+const TotalSavings = () => {
 
   const sharedData = useSelector((state) => state.budget.shared);
   const savings = sharedData.lenght===0? 0 : useSelector((state) => state.budget.shared.totalSavings);
@@ -10,7 +11,7 @@ const TotalSavings = ({month, year}) => {
     <Table responsive variant='success' className='m-0'>
         <thead>
             <tr>
-                <td>Total Savings This Month</td>
+                <td>{texts.totalSavings.totalSavingsThisMonth}</td>
                 <td style={{color:'green', fontWeight:'bold'}}>{savings===undefined? "Not Fetched Yet" : savings}</td>
             </tr>
         </thead>

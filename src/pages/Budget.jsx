@@ -13,6 +13,7 @@ import { CalculatedDates } from '../data/DatesAndTimesCalculation';
 import DatePicker from '../components/forms/DatePicker';
 import { useDispatch } from 'react-redux';
 import { fetchBudget } from '../redux/slices/budgetSlice';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const Budget = () => {
 
@@ -45,10 +46,10 @@ const Budget = () => {
               <Card style={{border:'1px gray solid'}}>
                 <ListGroup variant="flush">
                   <ListGroup.Item style={{display:'flex', justifyContent:'space-around', fontWeight:'bolder', fontSize:'large'}}>
-                    Credit
+                    {texts.budgetPage.credit.heading}
                     { month!=-1 && year!=-1 && !Number.isNaN(year) &&
                       <>
-                        <Button size='sm' variant='primary' onClick={() => SetAddIncomeForm(true)}>+ Add Income</Button>
+                        <Button size='sm' variant='primary' onClick={() => SetAddIncomeForm(true)}>{texts.budgetPage.credit.addIncomeButton}</Button>
                         <AddIncomeForm show={addIncomeForm} onHide={()=> SetAddIncomeForm(false)} />
                       </>
                     }
@@ -63,10 +64,10 @@ const Budget = () => {
               <Card style={{border:'1px gray solid'}}>
                 <ListGroup variant="flush">
                   <ListGroup.Item style={{display:'flex', justifyContent:'space-around', fontWeight:'bolder', fontSize:'large'}}>
-                    Debit
+                    {texts.budgetPage.debit.heading}
                     { month!=-1 && year!=-1 && !Number.isNaN(year) &&
                       <>
-                        <Button size='sm'  variant='primary' onClick={() => setAddExpectedExpenseForm(true)}>+ Add Expected-Expense</Button>
+                        <Button size='sm'  variant='primary' onClick={() => setAddExpectedExpenseForm(true)}>{texts.budgetPage.debit.addExpectedExpenseButton}</Button>
                         <AddExpectedExpenseForm show={addExpectedExpenseForm} onHide={()=> setAddExpectedExpenseForm(false)}/>
                       </>
                     }

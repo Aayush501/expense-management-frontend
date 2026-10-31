@@ -4,6 +4,7 @@ import "../../App.css";
 import { shallowEqual, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import EditTransactionForm from '../forms/EditTransactionForm';
+import { texts } from '../../application-texts/ApplicationTexts';
 
 const TableComponent = ({name, month, year, bankNameProp}) => {
 
@@ -38,17 +39,17 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
                       return <th key={index}>{i.name}</th>
                     })
                   }
-                  <th>Total</th>
+                  <th>{texts.tableComponent.ledgerSummary.total}</th>
                 </>
                 :
                 <>
-                  <th>S.No.</th>
-                  <th>Transaction Id</th>
-                  <th>Date</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th>Transaction Type</th>
-                  <th>Balance</th>
+                  <th>{texts.tableComponent.ledgerTableData.sNo}</th>
+                  <th>{texts.tableComponent.ledgerTableData.transactionId}</th>
+                  <th>{texts.tableComponent.ledgerTableData.date}</th>
+                  <th>{texts.tableComponent.ledgerTableData.description}</th>
+                  <th>{texts.tableComponent.ledgerTableData.amount}</th>
+                  <th>{texts.tableComponent.ledgerTableData.transactionType}</th>
+                  <th>{texts.tableComponent.ledgerTableData.balance}</th>
                 </>
               }
           </tr>
@@ -58,7 +59,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
           name==="BALANCE_SUMMARY" ?
             <>
               <tr>
-                <td>Current Balance</td>
+                <td>{texts.tableComponent.balanceSummary.currentBalance}</td>
                 {
                   banks.map((i, index) => {
                     return <td key={index}>{i.balance}</td>
@@ -70,7 +71,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
             : name==="LEDGER_SUMMARY"?
             <>
               <tr>
-                <td>Credit</td>
+                <td>{texts.tableComponent.ledgerSummary.credit}</td>
                 {
                   banks.map((val) => {
                     return <td key={val.id}>{credits[val.id]? credits[val.id] : 0}</td>
@@ -81,7 +82,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
                 </td>
               </tr>
               <tr>
-                <td>Debit</td>
+                <td>{texts.tableComponent.ledgerSummary.debit}</td>
                 {
                   banks.map((val) => {
                     return <td key={val.id}>{debits[val.id]? debits[val.id] : 0}</td>
@@ -92,7 +93,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
                 </td>
               </tr>
               <tr>
-                <td>Net C|D</td>
+                <td>{texts.tableComponent.ledgerSummary.netCreditOrDebit}</td>
                 {
                   banks.map((val) => {
                     return <td key={val.id}>{netCreditOrDebit[val.id] == undefined? 0 : netCreditOrDebit[val.id].amount}</td>
@@ -115,7 +116,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
                     <td>{i.amount}</td>
                     <td>{i.transactionType}</td>
                     <td>{i.balanceAfterThisTransaction}</td>
-                    <td><Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditTransactionForm(true); setEditableTransaction(i)}}>edit?</Button></td>
+                    <td><Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditTransactionForm(true); setEditableTransaction(i)}}>{texts.tableComponent.ledgerTableData.editButton}</Button></td>
                   </tr>
                 })
               }
@@ -125,7 +126,9 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
         </tbody>
       </Table>
       :
-      "Nothing to show here"
+      <>
+        {texts.tableComponent.nothingToShowHere}
+      </>
     }
     </>
   )

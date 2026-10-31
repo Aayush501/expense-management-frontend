@@ -1,6 +1,7 @@
 import { Table } from 'react-bootstrap'
 import { creditHeadings, debitHeadings } from '../../constants/BudgetTableHeadings';
 import { useSelector } from 'react-redux';
+import { texts } from '../../application-texts/ApplicationTexts';
 
 const BudgetTable = ({name=""}) => {
 
@@ -21,7 +22,7 @@ const BudgetTable = ({name=""}) => {
                     name==="credit"? 
                         <>
                         <tr>
-                            <td>Previous Savings</td>
+                            <td>{texts.budgetTable.creditTable.previousSavings}</td>
                             <td>{0}</td>
                         </tr>
                         {creditData.map((val) => 
@@ -30,7 +31,7 @@ const BudgetTable = ({name=""}) => {
                             <td>{val.amount}</td>
                         </tr>)}
                         <tr>
-                            <td>Total</td>
+                            <td>{texts.budgetTable.creditTable.total}</td>
                             <td>{0}</td>
                         </tr>
                         </>
@@ -43,7 +44,7 @@ const BudgetTable = ({name=""}) => {
                         <td>{val.actualAmount}</td>
                     </tr>)}
                     <tr>
-                        <td>Total</td>
+                        <td>{texts.budgetTable.debitTable.total}</td>
                         <td>{0}</td>
                         <td>{0}</td>
                     </tr>

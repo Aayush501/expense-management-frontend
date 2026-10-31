@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { texts } from "../../application-texts/ApplicationTexts";
 
 const AddInvestmentForm = (props) => {
   
@@ -17,39 +18,39 @@ const AddInvestmentForm = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    + Add New Investment
+                    {texts.addInvestmentForm.title}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Name Of Investment</Form.Label>
-                        <Form.Control type="text" placeholder="Enter name of the investment" />
+                        <Form.Label>{texts.addInvestmentForm.investmentNameLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addInvestmentForm.investmentNamePlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                        <Form.Label>Investment Type</Form.Label>
+                        <Form.Label>{texts.addInvestmentForm.investmentTypeLabel}</Form.Label>
                         <Form.Select value={investmentType} onChange={(e) => setInvestmentType(e.target.value)} >
-                            <option value={'onetime'}>One Time</option>
-                            <option value={'sip'}>SIP</option>
+                            <option value={'onetime'}>{texts.addInvestmentForm.oneTimeOption}</option>
+                            <option value={'sip'}>{texts.addInvestmentForm.sipOption}</option>
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Installment Amount</Form.Label>
-                        <Form.Control type="text" placeholder="Enter amount of installment" />
+                        <Form.Label>{texts.addInvestmentForm.installmentAmountLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addInvestmentForm.installmentAmountPlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Cumulative</Form.Label>
-                        <Form.Control type="text" placeholder="Enter number of installments done till date" />
+                        <Form.Label>{texts.addInvestmentForm.cumulativeLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addInvestmentForm.cumulativePlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Current Value</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Current Cumulative Balance" />
+                        <Form.Label>{texts.addInvestmentForm.currentValueLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.addInvestmentForm.currentValuePlaceholder} />
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='success' onClick={props.onHide}>Submit</Button>
-                <Button variant='danger' onClick={props.onHide}>Cancel</Button>
+                <Button variant='success' onClick={props.onHide}>{texts.addInvestmentForm.submitButton}</Button>
+                <Button variant='danger' onClick={props.onHide}>{texts.addInvestmentForm.cancelButton}</Button>
             </Modal.Footer>
         </Modal>
     </>

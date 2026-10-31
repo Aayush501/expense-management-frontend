@@ -1,6 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLedgerForSpecificBank } from '../redux/slices/ledgerSlice';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const DropDownMenu = ({setBankName}) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const DropDownMenu = ({setBankName}) => {
 
   return (
     <Form.Select aria-label="Month Selection" onChange={(e) => handleValueChange(e)} >
-      <option key={"first-option"} value={""}>{`Select The Bank`}</option>
+      <option key={"first-option"} value={""}>{texts.dropDownMenu.selectTheBank}</option>
       {  
         banks.length>0 && banks.map((bank) => {
             return <option key={bank.id} value={bank.name}>{bank.name}</option>

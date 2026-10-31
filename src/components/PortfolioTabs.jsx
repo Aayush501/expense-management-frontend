@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { investments, debts, receivables } from '../constants/PortfolioTabOptions';
+import {investments, debts, receivables} from "../constants/PortfolioTabOptions";
 import ItemFallback from './fallbacks/ItemFallback';
 
 const InvestmentsSummary = lazy(() => import("./InvestmentsSummary"));

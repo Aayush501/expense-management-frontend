@@ -3,6 +3,7 @@ import TableComponent from '../components/tables/TableComponent';
 import { Button } from 'react-bootstrap';
 import DropDownMenu from '../components/DropDownMenu';
 import AddTransactionForm from '../components/forms/AddTransactionForm';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const Ledger = () => {
 
@@ -17,7 +18,7 @@ const Ledger = () => {
         {
           bankName.trim()!="" && 
           <div className='container'>
-            <Button variant="primary" onClick={() => setShowForm(true)}>+ Add Transaction</Button>
+            <Button variant="primary" onClick={() => setShowForm(true)}>{texts.ledgerPage.addTransactionButton}</Button>
             <AddTransactionForm show={showForm} onHide={() => setShowForm(false)} bank={bankName} />
           </div>
         }

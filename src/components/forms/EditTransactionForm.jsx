@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap';
+import { texts } from "../../application-texts/ApplicationTexts";
 import useFetchExpenses from '../../data/ExpenseList';
 import usePortfolioData from '../../data/PortfolioData';
 
@@ -32,107 +33,107 @@ const EditTransactionForm = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Transaction With Serial Number : {props.transaction.serial}
+                    {texts.editTransactionForm.title} With Serial Number : {props.transaction.serial}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Date</Form.Label>
+                        <Form.Label>{texts.editTransactionForm.chooseDateLabel}</Form.Label>
                         <Form.Control value={date} onChange={(e) => setDate(e.target.value)} type="date" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                        <Form.Label>Amount</Form.Label>
-                        <Form.Control type='text' value={amount} onChange={(e) => setAmount(e.target.value)} placeholder='Amount'/>
+                        <Form.Label>{texts.editTransactionForm.amountLabel}</Form.Label>
+                        <Form.Control type='text' value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={texts.editTransactionForm.amountPlaceholder}/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                        <Form.Label>Transaction Type</Form.Label>
+                        <Form.Label>{texts.editTransactionForm.transactionTypeLabel}</Form.Label>
                         <Form.Select value={transactionType} onChange={(e) => setTransactionType(e.target.value)} >
-                            <option value={'credit'}>Credit</option>
-                            <option value={'debit'}>Debit</option>
+                            <option value={'credit'}>{texts.editTransactionForm.creditOption}</option>
+                            <option value={'debit'}>{texts.editTransactionForm.debitOption}</option>
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control type='text' placeholder='Description'/>
+                        <Form.Label>{texts.editTransactionForm.descriptionLabel}</Form.Label>
+                        <Form.Control type='text' placeholder={texts.editTransactionForm.descriptionPlaceholder}/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
-                        <Form.Label >Does this transaction affect budget?</Form.Label>
-                        <Form.Check type='radio' value={"yes"} label={'Yes'} checked={affectsBudget==="yes"} onChange={(e) => setAffectsBudget(e.target.value)} />
-                        <Form.Check type='radio' value={"no"} label={'No'} checked={affectsBudget==="no"} onChange={(e) => setAffectsBudget(e.target.value)} />
+                        <Form.Label >{texts.editTransactionForm.affectsBudgetLabel}</Form.Label>
+                        <Form.Check type='radio' value={"yes"} label={texts.editTransactionForm.yesOption} checked={affectsBudget==="yes"} onChange={(e) => setAffectsBudget(e.target.value)} />
+                        <Form.Check type='radio' value={"no"} label={texts.editTransactionForm.noOption} checked={affectsBudget==="no"} onChange={(e) => setAffectsBudget(e.target.value)} />
                     </Form.Group>
                     {
                         <>
                         {
                             affectsBudget==="yes" && 
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                                <Form.Label>This Transaction Falls In Which Section Of Budget?</Form.Label>
+                                <Form.Label>{texts.editTransactionForm.budgetSectionLabel}</Form.Label>
                                 <Form.Select value={budgetSection} onChange={(e) => setBudgetSection(e.target.value)} >
-                                    <option value={'income'}>Income</option>
-                                    <option value={'expense'}>Expense</option>
+                                    <option value={'income'}>{texts.editTransactionForm.incomeOption}</option>
+                                    <option value={'expense'}>{texts.editTransactionForm.expenseOption}</option>
                                 </Form.Select>
                             </Form.Group>
                         }
                         {
                             affectsBudget==="yes" && budgetSection==="income"? 
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label>Set Income Name</Form.Label>
-                                <Form.Control type="text" placeholder='Give this income a name' />
+                                <Form.Label>{texts.editTransactionForm.setIncomeNameLabel}</Form.Label>
+                                <Form.Control type="text" placeholder={texts.editTransactionForm.incomeNamePlaceholder} />
                             </Form.Group>
                             : affectsBudget==="yes" && budgetSection==="expense"? 
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                                <Form.Label>Choose Expense This Transaction Affects To</Form.Label>
+                                <Form.Label>{texts.editTransactionForm.chooseExpenseLabel}</Form.Label>
                                 <Form.Select value={expectedExpense} onChange={(e) => setExpectedExpense(e.target.value)}>
-                                    <option value={''}>Choose Expense</option>
+                                    <option value={''}>{texts.editTransactionForm.chooseExpenseOption}</option>
                                     {
                                         fetchExpense.map((val) => <option value={val.id} key={val.id}>{val.name}</option>)
                                     }
-                                    <option value={'addNew'}>+ Add New</option>
+                                    <option value={'addNew'}>{texts.editTransactionForm.addNewOption}</option>
                                 </Form.Select>
-                                { expectedExpense==="addNew" && <Form.Control type='text' value={customExpense} onChange={(e) => setCustomExpense(e.target.value)} placeholder='+ Add a new Expense Here' />}
+                                { expectedExpense==="addNew" && <Form.Control type='text' value={customExpense} onChange={(e) => setCustomExpense(e.target.value)} placeholder={texts.editTransactionForm.addNewExpensePlaceholder} />}
                             </Form.Group>
                             : ""
                         }
                         </>
                     }
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
-                        <Form.Label >Does this transaction affect portfolio?</Form.Label>
-                        <Form.Check type='radio' value={"yes"} label={'Yes'} checked={affectsPortfolio==="yes"} onChange={(e) => setAffectsPortfolio(e.target.value)} />
-                        <Form.Check type='radio' value={"no"} label={'No'} checked={affectsPortfolio==="no"} onChange={(e) => setAffectsPortfolio(e.target.value)} />
+                        <Form.Label >{texts.editTransactionForm.portfolioSectionLabel}</Form.Label>
+                        <Form.Check type='radio' value={"yes"} label={texts.editTransactionForm.yesOption} checked={affectsPortfolio==="yes"} onChange={(e) => setAffectsPortfolio(e.target.value)} />
+                        <Form.Check type='radio' value={"no"} label={texts.editTransactionForm.noOption} checked={affectsPortfolio==="no"} onChange={(e) => setAffectsPortfolio(e.target.value)} />
                     </Form.Group>
                     {
                         <>
                         {
                             affectsPortfolio==="yes" && 
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                                <Form.Label>This Transaction Falls In Which Section Of portfolio?</Form.Label>
+                                <Form.Label>{texts.editTransactionForm.portfolioBudgetSectionLabel}</Form.Label>
                                 <Form.Select value={portfolioSection} onChange={(e) => setPortfolioSection(e.target.value)} >
-                                    <option value={'investments'}>Investments</option>
-                                    { transactionType==="credit" && <option value={'debts'}>Debts</option>}
-                                    <option value={'receivables'}>Receivables</option>
+                                    <option value={'investments'}>{texts.editTransactionForm.investmentsOption}</option>
+                                    { transactionType==="credit" && <option value={'debts'}>{texts.editTransactionForm.debtsOption}</option>}
+                                    <option value={'receivables'}>{texts.editTransactionForm.receivablesOption}</option>
                                 </Form.Select>
                             </Form.Group>
                         }
                         {
                             affectsPortfolio==="yes" && portfolioSection==="investments"? 
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                                <Form.Label>Choose Investment This Transaction Affects To</Form.Label>
+                                <Form.Label>{texts.editTransactionForm.chooseInvestmentLabel}</Form.Label>
                                 <Form.Select value={expectedInvestment} onChange={(e) => setExpectedInvestment(e.target.value)}>
-                                    <option value={''}>Choose Investment</option>
+                                    <option value={''}>{texts.editTransactionForm.chooseInvestmentOption}</option>
                                     {
                                         fetchInvestments.investments.map((val) => <option value={val.name} key={val.investmentId}>{val.name}</option>)
                                     }
-                                    <option value={'addNew'}>+ Add New</option>
+                                    <option value={'addNew'}>{texts.editTransactionForm.addNewOption}</option>
                                 </Form.Select>
                                 {   
                                     expectedInvestment==="addNew" &&
                                     <>
-                                        <Form.Control type='text' value={customInvestment} onChange={(e) => setCustomInvestment(e.target.value)} placeholder='+ Add a new Investment here' />
+                                        <Form.Control type='text' value={customInvestment} onChange={(e) => setCustomInvestment(e.target.value)} placeholder={texts.editTransactionForm.addNewInvestmentPlaceholder} />
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                                            <Form.Label>Investment Type</Form.Label>
+                                            <Form.Label>{texts.editTransactionForm.investmentTypeLabel}</Form.Label>
                                             <Form.Select value={investmentType} onChange={(e) => setInvestmentType(e.target.value)} >
-                                                <option value={'onetime'}>One Time</option>
-                                                <option value={'sip'}>SIP</option>
+                                                <option value={'onetime'}>{texts.editInvestmentForm.oneTimeOption}</option>
+                                                <option value={'sip'}>{texts.editInvestmentForm.sipOption}</option>
                                             </Form.Select>
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
@@ -146,8 +147,8 @@ const EditTransactionForm = (props) => {
                             </Form.Group>
                             :affectsPortfolio==="yes"?
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                                <Form.Label>From: </Form.Label>
-                                <Form.Control type='text' placeholder='Add name of the autority this transaction belongs to' />
+                                <Form.Label>{texts.editTransactionForm.fromLabel} </Form.Label>
+                                <Form.Control type='text' placeholder={texts.editTransactionForm.authorityPlaceholder} />
                             </Form.Group>
                             :""
                         }
@@ -156,8 +157,8 @@ const EditTransactionForm = (props) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='success' onClick={props.onHide}>Submit</Button>
-                <Button variant='danger' onClick={props.onHide}>Cancel</Button>
+                <Button variant='success' onClick={props.onHide}>{texts.editTransactionForm.submitButton}</Button>
+                <Button variant='danger' onClick={props.onHide}>{texts.editTransactionForm.cancelButton}</Button>
             </Modal.Footer>
         </Modal>
     </>

@@ -6,6 +6,7 @@ import DatePicker from '../components/forms/DatePicker';
 import { CalculatedDates } from '../data/DatesAndTimesCalculation';
 import { useDispatch } from 'react-redux';
 import { fetchLedgerSummaryForSpecificMonth } from '../redux/slices/ledgerSlice';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const UserDashBoardHome = () => {
 
@@ -33,14 +34,14 @@ const UserDashBoardHome = () => {
       >
         <Tab eventKey="balancesummary" title="BalanceSummary">
           <div className='tbl-name'>
-            <h3>BALANCE_SUMMARY</h3>
+            <h3>{texts.userDashboardHomePage.balanceSummary}</h3>
           </div>
           <TableComponent name="BALANCE_SUMMARY" />
         </Tab>
         
         <Tab eventKey="ledgersummary" title="LedgerSummary">
           <div className='tbl-name'>
-            <h3>LEDGER_SUMMARY</h3>
+            <h3>{texts.userDashboardHomePage.ledgerSummary}</h3>
           </div>
           <div className='date-picker'>
             <DatePicker SelectionLabel={"Select Month and Year"} selectionType={"month"} selectedDate={year+"-"+month} setDate={setMonthAndYear} />

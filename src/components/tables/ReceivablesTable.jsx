@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { lazy, Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ItemFallback from '../fallbacks/ItemFallback';
+import { texts } from '../../application-texts/ApplicationTexts';
 
 const AddReceivableForm = lazy(() => import("../forms/AddReceivableForm"));
 
@@ -16,7 +17,7 @@ const ReceivablesTable = ({status}) => {
             {
                 status==="REMAINING" && 
                 <div className='container my-2'>
-                    <Button variant="primary" onClick={() =>setShowForm(true)}>+ Add Receivable</Button>
+                    <Button variant="primary" onClick={() =>setShowForm(true)}>{texts.receivablesTable.addReceivableButton}</Button>
                     <Suspense fallback={<ItemFallback item={"Receivable Form"} />}>
                         <AddReceivableForm show={showForm} onHide={() => setShowForm(false)} />
                     </Suspense>
@@ -32,7 +33,9 @@ const ReceivablesTable = ({status}) => {
                 }
                 </div> 
                 :
-                "Nothing To Show Here !!!"
+                <>
+                    {texts.receivablesTable.nothingToShowHere}
+                </>
             }
         </>
     )

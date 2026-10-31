@@ -6,6 +6,7 @@ const AddInvestmentForm = lazy(() => import ("./forms/AddInvestmentForm"));
 const EditInvestmentForm = lazy(() => import("./forms/EditInvestmentForm"));
 import { useSelector } from 'react-redux';
 import ItemFallback from './fallbacks/ItemFallback';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const InvestmentsSummary = () => {
     const investmentData = useSelector((state) => state.investments.value);
@@ -16,7 +17,7 @@ const InvestmentsSummary = () => {
     return (
         <>
             <div className='container my-2'>
-                <Button variant="primary" onClick={() =>setShowForm(true)}>+ Add Investment</Button> 
+                <Button variant="primary" onClick={() =>setShowForm(true)}>{texts.investmentsSummary.addInvestmentButton}</Button> 
                 <Suspense fallback={<ItemFallback item={"Add Investment Form"}/>}>
                     <AddInvestmentForm show={showForm} onHide={() => setShowForm(false)} />
                 </Suspense>
@@ -57,7 +58,7 @@ const InvestmentsSummary = () => {
                                 {val.currentValue}
                             </td>
                             <td>
-                                <Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditInvestment(true); setEditableInvestment(val)}}>edit?</Button>
+                                <Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditInvestment(true); setEditableInvestment(val)}}>{texts.investmentsSummary.editButton}</Button>
                             </td>
                         </tr>
                     )}

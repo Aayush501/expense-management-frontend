@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
+import { texts } from "../../application-texts/ApplicationTexts";
 
 const EditInvestmentForm = (props) => {
   const [investmentType,setInvestmentType] = useState('sip');
@@ -14,31 +15,31 @@ const EditInvestmentForm = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Edit Investment With Serial Number: {props.investment.serial}
+                    {texts.editInvestmentForm.title} With Serial Number: {props.investment.serial}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Name Of Investment</Form.Label>
-                        <Form.Control type="text" placeholder="Enter name of the investment" />
+                        <Form.Label>{texts.editInvestmentForm.investmentNameLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.editInvestmentForm.investmentNamePlaceholder} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                        <Form.Label>Investment Type</Form.Label>
+                        <Form.Label>{texts.editInvestmentForm.investmentTypeLabel}</Form.Label>
                         <Form.Select value={investmentType} onChange={(e) => setInvestmentType(e.target.value)} >
-                            <option value={'onetime'}>One Time</option>
-                            <option value={'sip'}>SIP</option>
+                            <option value={'onetime'}>{texts.editInvestmentForm.oneTimeOption}</option>
+                            <option value={'sip'}>{texts.editInvestmentForm.sipOption}</option>
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Current Value</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Current Cumulative Balance" />
+                        <Form.Label>{texts.editInvestmentForm.currentValueLabel}</Form.Label>
+                        <Form.Control type="text" placeholder={texts.editInvestmentForm.currentValuePlaceholder} />
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='success' onClick={props.onHide}>Submit</Button>
-                <Button variant='danger' onClick={props.onHide}>Cancel</Button>
+                <Button variant='success' onClick={props.onHide}>{texts.editInvestmentForm.submitButton}</Button>
+                <Button variant='danger' onClick={props.onHide}>{texts.editInvestmentForm.cancelButton}</Button>
             </Modal.Footer>
         </Modal>
     </>

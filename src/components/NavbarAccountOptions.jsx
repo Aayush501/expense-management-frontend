@@ -9,6 +9,7 @@ import { emptyLedger } from '../redux/slices/ledgerSlice';
 import { emptyReceivables } from '../redux/slices/receivablesSlice';
 import { CircleUserRound } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { texts } from '../application-texts/ApplicationTexts';
 
 
 const NavbarAccountOptions = () => {
@@ -30,9 +31,9 @@ const NavbarAccountOptions = () => {
     const popover = (
         <Popover id="popover-basic" style={{ width: '18rem' }} >
             <Popover.Body style={{display : 'flex', flexDirection : 'column', gap : '1rem' }}>
-                <Button variant="light" onClick={() => navigate('/user/profile')}>See Profile</Button>
-                <Button variant="light" onClick={() => navigate('/user/banks')}>Bank Management</Button>
-                <Button variant="light" onClick={() => handleLogout()}>Logout</Button>
+                <Button variant="light" onClick={() => navigate('/user/profile')}>{texts.navbarAccountOptions.popover.seeProfile}</Button>
+                <Button variant="light" onClick={() => navigate('/user/banks')}>{texts.navbarAccountOptions.popover.bankManagement}</Button>
+                <Button variant="light" onClick={() => handleLogout()}>{texts.navbarAccountOptions.popover.logout}</Button>
             </Popover.Body>
         </Popover>
     )

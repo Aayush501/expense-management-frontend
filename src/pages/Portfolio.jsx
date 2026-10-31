@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { fetchInvestmentLedgerForSpecificUser, fetchInvestmentsForSpecificUser } from '../redux/slices/investmentsSlice';
 import { fetchPaidDebt, fetchRemainingDebts } from '../redux/slices/debtsSlice';
 import { fetchReceivedReceivables, fetchRemainingReceivables } from '../redux/slices/receivablesSlice';
+import { texts } from '../application-texts/ApplicationTexts';
 
 const Portfolio = () => {
 
@@ -26,13 +27,13 @@ const Portfolio = () => {
             <Col sm={2}>
               <Nav variant="pills" className="flex-column">
                 <Nav.Item>
-                  <Nav.Link eventKey="investments">Investments</Nav.Link>
+                  <Nav.Link eventKey="investments">{texts.portfolioPage.investments}</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="debts">Debts</Nav.Link>
+                  <Nav.Link eventKey="debts">{texts.portfolioPage.debts}</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="receivables">Receivables</Nav.Link>
+                  <Nav.Link eventKey="receivables">{texts.portfolioPage.receivables}</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>

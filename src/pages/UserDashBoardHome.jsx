@@ -7,6 +7,7 @@ import { CalculatedDates } from '../data/DatesAndTimesCalculation';
 import { useDispatch } from 'react-redux';
 import { fetchLedgerSummaryForSpecificMonth } from '../redux/slices/ledgerSlice';
 import { texts } from '../application-texts/ApplicationTexts';
+import BalanceSummaryTable from '../components/tables/BalanceSummaryTable';
 
 const UserDashBoardHome = () => {
 
@@ -36,7 +37,7 @@ const UserDashBoardHome = () => {
           <div className='tbl-name'>
             <h3>{texts.userDashboardHomePage.balanceSummary}</h3>
           </div>
-          <TableComponent name="BALANCE_SUMMARY" />
+          <BalanceSummaryTable />
         </Tab>
         
         <Tab eventKey="ledgersummary" title="LedgerSummary">

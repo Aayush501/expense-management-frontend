@@ -21,7 +21,6 @@ function Login() {
     }
 
     await dispatch(loginUser({username : formUsername, password : formPassword}));
-    await dispatch(fetchBanks({}));
   }
 
   return (

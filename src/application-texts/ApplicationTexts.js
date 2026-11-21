@@ -362,5 +362,10 @@ export const texts = {
         updateProfileButton : "Update Profile",
         changePasswordButton : "Change Password",
         deleteAccountButton : "Delete Account"
+    },
+    balanceSummaryTable : {
+        total : "Total",
+        currentBalance : "Current Balance",
+        dataLoading : "please wait till the data is loading"
     }
 }

@@ -37,6 +37,7 @@ function App() {
           <Route path='/portfolio' element={<Portfolio />} />
           <Route path='/budget' element={<Budget />} />
           <Route path='/user/banks' element={<BankManagement />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </>
       }

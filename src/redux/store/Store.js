@@ -6,6 +6,7 @@ import debtsReducer from '../slices/debtsSlice'
 import receivablesReducer from '../slices/receivablesSlice'
 import investmentsReducer from '../slices/investmentsSlice'
 import budgetReducer from '../slices/budgetSlice'
+import applicationStateReducer from '../slices/applicationStateSlice'
 
 
 export const store = configureStore({
@@ -16,6 +17,7 @@ export const store = configureStore({
     debts : debtsReducer,
     receivables : receivablesReducer,
     investments : investmentsReducer,
-    budget : budgetReducer
+    budget : budgetReducer,
+    applicationState : applicationStateReducer
   }
 })

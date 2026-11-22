@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import UserDashBoardHome from './pages/UserDashBoardHome';
 import BankManagement from './pages/BankManagement';
 import UserProfilePage from './pages/UserProfile';
+import BalanceSummaryTable from './components/tables/BalanceSummaryTable';
+import LedgerSummaryComponent from './components/LedgerSummaryComponent';
 
 
 function App() {
@@ -25,7 +27,10 @@ function App() {
             <NavigationBar />
         </div>
         <Routes>
-          <Route path='/' element={<UserDashBoardHome/>} />
+          <Route path='/' element={<UserDashBoardHome />} >
+            <Route path='/balanceSummary' element={<BalanceSummaryTable />} />
+            <Route path='/ledgerSummary' element={<LedgerSummaryComponent />} />
+          </Route>
           <Route path='/signup' element={<Signup />} />
           <Route path='/user/profile' element={<UserProfilePage />} />
           <Route path='/ledger' element={<Ledger />} />

@@ -1,56 +1,31 @@
-import { useEffect, useState } from 'react';
-import TableComponent from '../components/tables/TableComponent';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import DatePicker from '../components/forms/DatePicker';
-import { CalculatedDates } from '../data/DatesAndTimesCalculation';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchLedgerSummaryForSpecificMonth } from '../redux/slices/ledgerSlice';
-import { texts } from '../application-texts/ApplicationTexts';
-import BalanceSummaryTable from '../components/tables/BalanceSummaryTable';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { fetchBanks } from '../redux/slices/banksSlice';
 
 const UserDashBoardHome = () => {
-
-  const [month, setMonth] = useState(CalculatedDates.currentMonth);
-  const [year, setYear] = useState(CalculatedDates.currentYear);
   
-  const setMonthAndYear = (monthYear) => {
-    setMonth(monthYear.substring(5));
-    setYear(monthYear.substring(0,4));
-  }
-
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    dispatch(fetchLedgerSummaryForSpecificMonth({month : month, year : year}));
-  }, [month, year])
+    dispatch(fetchBanks({}));
+  }, []);
 
   return (
     <>
-    <div className='container my-3'>
-      <Tabs
-        defaultActiveKey="balancesummary"
-        id="uncontrolled-tab"
-        className="mb-3"
-      >
-        <Tab eventKey="balancesummary" title="BalanceSummary">
-          <div className='tbl-name'>
-            <h3>{texts.userDashboardHomePage.balanceSummary}</h3>
-          </div>
-          <BalanceSummaryTable />
-        </Tab>
-        
-        <Tab eventKey="ledgersummary" title="LedgerSummary">
-          <div className='tbl-name'>
-            <h3>{texts.userDashboardHomePage.ledgerSummary}</h3>
-          </div>
-          <div className='date-picker'>
-            <DatePicker SelectionLabel={"Select Month and Year"} selectionType={"month"} selectedDate={year+"-"+month} setDate={setMonthAndYear} />
-          </div>
-          <TableComponent name="LEDGER_SUMMARY" month={month} year={year} />
-        </Tab>
-      </Tabs>
-    </div>
+    <Navbar expand="sm" className="bg-body-tertiary my-3 mx-5">
+      <Container>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to='/balanceSummary'>balance summary</Nav.Link>
+            <Nav.Link as={Link} to='/ledgerSummary'>ledger summary</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+    <Outlet />
     </>
   );
 };

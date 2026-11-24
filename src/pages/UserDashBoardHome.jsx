@@ -1,23 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { fetchBanks } from '../redux/slices/banksSlice';
 
 const UserDashBoardHome = () => {
-  const username = useSelector(state => state.user.value.username);
-  const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
   
   useEffect(() => {
-    if(username===null || username.trim()==="" || username===undefined){
-      navigate("/login");
-    }
-    if(location.pathname === '/') {
-      navigate('/balanceSummary');
-    }
     dispatch(fetchBanks({}));
   }, []);
 

@@ -33,6 +33,7 @@ function App() {
         </div>
         <Routes>
           <Route path='/' element={<UserDashBoardHome />} >
+            <Route index element={<Navigate to="balanceSummary" replace />} />
             <Route path='/balanceSummary' element={<BalanceSummaryTable />} />
             <Route path='/ledgerSummary' element={<LedgerSummaryComponent />} />
           </Route>

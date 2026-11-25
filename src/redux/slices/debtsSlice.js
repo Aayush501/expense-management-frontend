@@ -29,10 +29,7 @@ export const fetchPaidDebt = createAsyncThunk(
 
 const initialState = {
     /** @type {Debt[]} */
-    remaining : [],
-
-    /** @type {Debt[]} */
-    paid : []
+    value : []
 }
 
 export const debtsSlice = createSlice({
@@ -40,21 +37,20 @@ export const debtsSlice = createSlice({
     initialState,
     reducers : {
         emptyDebts : (state) => {
-            state.remaining = [];
-            state.paid = [];
+            state.value = [];
         }
     },
     extraReducers : (builder) => {
         builder.addCase(
             fetchRemainingDebts.fulfilled,
             (state, action) => {
-                state.remaining = action.payload;
+                state.value = action.payload;
             }
         )
         builder.addCase(
             fetchPaidDebt.fulfilled,
             (state, action) => {
-                state.paid = action.payload;
+                state.value = action.payload;
             }
         )
     }

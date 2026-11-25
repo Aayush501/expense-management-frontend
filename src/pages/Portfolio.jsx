@@ -1,23 +1,20 @@
+import { useEffect } from 'react';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
-import { useDispatch } from 'react-redux';
-import { fetchInvestmentLedgerForSpecificUser, fetchInvestmentsForSpecificUser } from '../redux/slices/investmentsSlice';
-import { fetchPaidDebt, fetchRemainingDebts } from '../redux/slices/debtsSlice';
-import { fetchReceivedReceivables, fetchRemainingReceivables } from '../redux/slices/receivablesSlice';
 import { texts } from '../application-texts/ApplicationTexts';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 const Portfolio = () => {
-
-  const dispatch = useDispatch();
-  dispatch(fetchInvestmentsForSpecificUser({}));
-  dispatch(fetchInvestmentLedgerForSpecificUser({}));
-  dispatch(fetchPaidDebt({}));
-  dispatch(fetchRemainingDebts({}));
-  dispatch(fetchRemainingReceivables({}));
-  dispatch(fetchReceivedReceivables({}));
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if(location.pathname === '/portfolio'){
+      navigate('investments');
+    }
+  }, [location]);
 
   return (
     <>

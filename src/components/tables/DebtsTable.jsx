@@ -1,15 +1,25 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import DebtOrReceivableCard from '../DebtOrReceivableCard';
 import { Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ItemFallback from '../fallbacks/ItemFallback';
 import { texts } from '../../application-texts/ApplicationTexts';
+import { fetchPaidDebt, fetchRemainingDebts } from '../../redux/slices/debtsSlice';
 const AddDebtForm = lazy(() => import("../forms/AddDebtForm"));
 
 const DebtsTable = ({statusProp}) => {
-
-  const debts = statusProp==="REMAINING"? useSelector((state) => state.debts.remaining) : useSelector((state) => state.debts.paid);
+  
+  const dispatch = useDispatch();
+  const debts = useSelector((state) => state.debts.value);
   const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    if (statusProp === "REMAINING") {
+      dispatch(fetchRemainingDebts({}));
+    } else {
+      dispatch(fetchPaidDebt({}));
+    }
+  }, [statusProp]);
 
   return (
     <>

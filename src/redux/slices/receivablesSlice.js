@@ -29,10 +29,7 @@ export const fetchReceivedReceivables = createAsyncThunk(
 
 const initialState = {
     /** @type {Receivable[]} */
-    remaining : [],
-
-    /** @type {Receivable[]} */
-    received : []
+    value : []
 }
 
 export const receivablesSlice = createSlice({
@@ -40,21 +37,20 @@ export const receivablesSlice = createSlice({
     initialState,
     reducers : {
         emptyReceivables : (state) => {
-            state.remaining = [];
-            state.received = [];
+            state.value = [];
         }
     },
     extraReducers : (builder) => {
         builder.addCase(
             fetchRemainingReceivables.fulfilled,
             (state, action) => {
-                state.remaining = action.payload;
+                state.value = action.payload;
             }
         )
         builder.addCase(
             fetchReceivedReceivables.fulfilled,
             (state, action) => {
-                state.received = action.payload;
+                state.value = action.payload;
             }
         )
     }

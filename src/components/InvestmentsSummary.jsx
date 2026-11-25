@@ -1,18 +1,25 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import Headings from '../constants/InvestmentSummaryHeadings';
 import { Button } from 'react-bootstrap';
 const AddInvestmentForm = lazy(() => import ("./forms/AddInvestmentForm"));
 const EditInvestmentForm = lazy(() => import("./forms/EditInvestmentForm"));
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ItemFallback from './fallbacks/ItemFallback';
 import { texts } from '../application-texts/ApplicationTexts';
+import { fetchInvestmentsForSpecificUser } from '../redux/slices/investmentsSlice';
 
 const InvestmentsSummary = () => {
+    const dispatch = useDispatch();
+
     const investmentData = useSelector((state) => state.investments.value);
     const [showForm, setShowForm] = useState(false);
     const [showEditInvestment, setShowEditInvestment] = useState(false);
     const [editableInvestment, setEditableInvestment] = useState({serial:NaN});
+
+    useEffect(() => {
+        dispatch(fetchInvestmentsForSpecificUser({}));
+    }, []);
 
     return (
         <>

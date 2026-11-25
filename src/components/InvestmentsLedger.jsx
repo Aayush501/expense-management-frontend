@@ -1,9 +1,16 @@
 import Table from 'react-bootstrap/Table';
 import headings from '../constants/InvestmentsLedgerHeadings';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchInvestmentLedgerForSpecificUser } from '../redux/slices/investmentsSlice';
 
 const InvestmentsLedger = () => {
+  const dispatch = useDispatch();
   const ledgerEntries = useSelector((state) => state.investments.ledger);
+
+  useEffect(() => {
+    dispatch(fetchInvestmentLedgerForSpecificUser({}));
+  }, []);
 
   return (
     <>

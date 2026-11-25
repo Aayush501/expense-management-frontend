@@ -41,19 +41,15 @@ function App() {
           <Route path='/user/profile' element={<UserProfilePage />} />
           <Route path='/ledger' element={<Ledger />} />
           <Route path='/portfolio' element={<Portfolio />} >
-            <Route index element={<Navigate to="investments/summary" replace />} />
             <Route path='investments' element={<PortfolioTabs name={"INVESTMENTS"} />}>
-              <Route index element={<Navigate to="summary" replace />} />
               <Route path='summary' element={<InvestmentsSummary />} />
               <Route path='ledger' element={<InvestmentsLedger />} />
             </Route>
             <Route path='debts' element={<PortfolioTabs name={"DEBTS"} />}>
-              <Route index element={<Navigate to="remaining" replace />} />
               <Route path='remaining' element={<DebtsTable statusProp={"REMAINING"} />} />
               <Route path='paid' element={<DebtsTable statusProp={"PAID"} />} />
             </Route>
             <Route path='receivables' element={<PortfolioTabs name={"receivables"} />}>
-              <Route index element={<Navigate to="remaining" replace />} />
               <Route path='remaining' element={<ReceivablesTable status={"REMAINING"} />} />
               <Route path='received' element={<ReceivablesTable status={"RECEIVED"} />} />
             </Route>

@@ -252,7 +252,7 @@ export const texts = {
         addReceivableButton : "+ Add Receivable",
         nothingToShowHere : "Nothing To Show Here !!!"
     },
-    tableComponent : {
+    transactionTable : {
         ledgerSummary : {
             total : "Total",
             credit : "Credit",

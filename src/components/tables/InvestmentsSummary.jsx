@@ -1,13 +1,13 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
-import Headings from '../constants/InvestmentSummaryHeadings';
+import Headings from '../../constants/InvestmentSummaryHeadings';
 import { Button } from 'react-bootstrap';
-const AddInvestmentForm = lazy(() => import ("./forms/AddInvestmentForm"));
-const EditInvestmentForm = lazy(() => import("./forms/EditInvestmentForm"));
+const AddInvestmentForm = lazy(() => import ("../forms/AddInvestmentForm"));
+const EditInvestmentForm = lazy(() => import("../forms/EditInvestmentForm"));
 import { useDispatch, useSelector } from 'react-redux';
-import ItemFallback from './fallbacks/ItemFallback';
-import { texts } from '../application-texts/ApplicationTexts';
-import { fetchInvestmentsForSpecificUser } from '../redux/slices/investmentsSlice';
+import ItemFallback from '../fallbacks/ItemFallback';
+import { texts } from '../../application-texts/ApplicationTexts';
+import { fetchInvestmentsForSpecificUser } from '../../redux/slices/investmentsSlice';
 
 const InvestmentsSummary = () => {
     const dispatch = useDispatch();

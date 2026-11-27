@@ -2,13 +2,18 @@ import { FileUser } from 'lucide-react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { texts } from '../application-texts/ApplicationTexts';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfilePage = () => {
 
     const userData = useSelector((state) => state.user.value);
+    const navigate = useNavigate();
 
     return (
         <>
+            <div className='container my-2'>
+                <h6 onClick={() => navigate(-1)}>{texts.userProfilePage.backButton}</h6>
+            </div>
             <div className='d-flex justify-content-center mt-5'>
                 <Card style={{ minWidth: '10rem' }}>
                     <div className='d-flex justify-content-center mt-3'>

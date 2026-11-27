@@ -356,6 +356,7 @@ export const texts = {
         ledgerSummary : "Ledger Summary"
     },
     userProfilePage : {
+        backButton : "< Back",
         fullNameLabel : "Full Name",
         emailLabel : "Email",
         phoneLabel : "Phone",

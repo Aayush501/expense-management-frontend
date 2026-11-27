@@ -8,8 +8,9 @@ import { emptyInvestments } from '../redux/slices/investmentsSlice';
 import { emptyLedger } from '../redux/slices/ledgerSlice';
 import { emptyReceivables } from '../redux/slices/receivablesSlice';
 import { CircleUserRound } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { texts } from '../application-texts/ApplicationTexts';
+import { useEffect, useState } from 'react';
 
 
 const NavbarAccountOptions = () => {
@@ -17,6 +18,15 @@ const NavbarAccountOptions = () => {
     const username = useSelector((state) => state.user.value.firstName);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [showTooltip, setShowTooltip] = useState(false);
+
+    const location = useLocation();
+    const currentPath = location.pathname;
+    
+    useEffect(() => {
+        setShowTooltip(false);
+    }, [currentPath]);
 
     const handleLogout = () => {
         dispatch(emptyUser());
@@ -31,8 +41,12 @@ const NavbarAccountOptions = () => {
     const popover = (
         <Popover id="popover-basic" style={{ width: '18rem' }} >
             <Popover.Body style={{display : 'flex', flexDirection : 'column', gap : '1rem' }}>
-                <Button variant="light" onClick={() => navigate('/user/profile')}>{texts.navbarAccountOptions.popover.seeProfile}</Button>
-                <Button variant="light" onClick={() => navigate('/user/banks')}>{texts.navbarAccountOptions.popover.bankManagement}</Button>
+                {
+                    location.pathname!=="/user/profile" && <Button variant="light" onClick={() => navigate('/user/profile')}>{texts.navbarAccountOptions.popover.seeProfile}</Button>
+                }
+                {
+                    location.pathname!=="/user/banks" && <Button variant="light" onClick={() => navigate('/user/banks')}>{texts.navbarAccountOptions.popover.bankManagement}</Button>
+                }
                 <Button variant="light" onClick={() => handleLogout()}>{texts.navbarAccountOptions.popover.logout}</Button>
             </Popover.Body>
         </Popover>
@@ -40,8 +54,8 @@ const NavbarAccountOptions = () => {
 
     return (
         <>
-            <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-                <Button variant="success">{`Hello ${username.toUpperCase()}`}   <CircleUserRound /></Button>
+            <OverlayTrigger show={showTooltip} onToggle={(show) => setShowTooltip(show)} trigger="click" placement="bottom" overlay={popover}>
+                <Button variant="success">{`Hello ${username.toUpperCase()}`} <CircleUserRound /></Button>
             </OverlayTrigger>
         </>
     );

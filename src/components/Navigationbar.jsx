@@ -12,6 +12,28 @@ const NavigationBar = () => {
     const currentPath = location.pathname;
     const chosenTabStyle = {fontWeight : 'bold', color:'white'};
 
+    const handleHomeClick = () => {
+        if (location.pathname.includes("ledgerSummary") || location.pathname.includes("balanceSummary")){
+            return;
+        }
+        navigate('/');
+    }
+
+    const handleLedgerClick = () => {
+        navigate('/ledger');
+    }
+
+    const handlePortfolioClick = () => {
+        if (location.pathname.split('/').length > 2){
+            return;
+        }
+        navigate('/portfolio');
+    }
+
+    const handleBudgetClick = () => {
+        navigate('/budget');
+    }
+
   return (
     <>
         <Navbar bg="primary">
@@ -19,28 +41,28 @@ const NavigationBar = () => {
                 <Nav className="me-auto">
                     <Nav.Item 
                         className='mx-1' 
-                        onClick={() => navigate('/')} 
+                        onClick={() => handleHomeClick()} 
                         style={currentPath==='/'? chosenTabStyle : {color:'white'}} 
                     >
                         {texts.navigationBar.home}
                     </Nav.Item>
                     <Nav.Item 
                         className='mx-1' 
-                        onClick={() => navigate('/ledger')} 
+                        onClick={() => handleLedgerClick()} 
                         style={currentPath==='/ledger'? chosenTabStyle : {color:'white'}}
                     >
                         {texts.navigationBar.ledger}
                     </Nav.Item>
                     <Nav.Item 
                         className='mx-1' 
-                        onClick={() => navigate('/portfolio')} 
+                        onClick={() => handlePortfolioClick()} 
                         style={currentPath==='/portfolio'? chosenTabStyle : {color:'white'}}
                     >
                         {texts.navigationBar.portfolio}
                     </Nav.Item>
                     <Nav.Item 
                         className='mx-1' 
-                        onClick={() => navigate('/budget')} 
+                        onClick={() => handleBudgetClick()} 
                         style={currentPath==='/budget'? chosenTabStyle : {color:'white'}}
                     >
                         {texts.navigationBar.budget}

@@ -13,10 +13,10 @@ import UserProfilePage from './pages/UserProfile';
 import BalanceSummaryTable from './components/tables/BalanceSummaryTable';
 import LedgerSummaryComponent from './components/LedgerSummaryComponent';
 import PortfolioTabs from './components/PortfolioTabs';
-import InvestmentsSummary from './components/InvestmentsSummary';
-import InvestmentsLedger from './components/InvestmentsLedger';
 import DebtsTable from './components/tables/DebtsTable';
 import ReceivablesTable from './components/tables/ReceivablesTable';
+import InvestmentsSummary from './components/tables/InvestmentsSummary';
+import InvestmentsLedger from './components/tables/InvestmentsLedger';
 
 
 function App() {

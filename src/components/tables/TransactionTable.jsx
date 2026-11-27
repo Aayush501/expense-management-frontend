@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import EditTransactionForm from '../forms/EditTransactionForm';
 import { texts } from '../../application-texts/ApplicationTexts';
 
-const TableComponent = ({name, month, year, bankNameProp}) => {
+const TransactionTable = ({name, month, year, bankNameProp}) => {
 
     const [showEditTransactionForm, setShowEditTransactionForm] = useState(false);
     const [editableTransaction, setEditableTransaction] = useState({serial:NaN});
@@ -19,13 +19,13 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
       <Table responsive>
         <thead>
           <tr>
-            <th>{texts.tableComponent.ledgerTableData.sNo}</th>
-            <th>{texts.tableComponent.ledgerTableData.transactionId}</th>
-            <th>{texts.tableComponent.ledgerTableData.date}</th>
-            <th>{texts.tableComponent.ledgerTableData.description}</th>
-            <th>{texts.tableComponent.ledgerTableData.amount}</th>
-            <th>{texts.tableComponent.ledgerTableData.transactionType}</th>
-            <th>{texts.tableComponent.ledgerTableData.balance}</th>
+            <th>{texts.transactionTable.ledgerTableData.sNo}</th>
+            <th>{texts.transactionTable.ledgerTableData.transactionId}</th>
+            <th>{texts.transactionTable.ledgerTableData.date}</th>
+            <th>{texts.transactionTable.ledgerTableData.description}</th>
+            <th>{texts.transactionTable.ledgerTableData.amount}</th>
+            <th>{texts.transactionTable.ledgerTableData.transactionType}</th>
+            <th>{texts.transactionTable.ledgerTableData.balance}</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
                 <td>{i.amount}</td>
                 <td>{i.transactionType}</td>
                 <td>{i.balanceAfterThisTransaction}</td>
-                <td><Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditTransactionForm(true); setEditableTransaction(i)}}>{texts.tableComponent.ledgerTableData.editButton}</Button></td>
+                <td><Button style={{marginTop:'-2px'}} size='sm' variant='info' onClick={()=>{setShowEditTransactionForm(true); setEditableTransaction(i)}}>{texts.transactionTable.ledgerTableData.editButton}</Button></td>
               </tr>
             })
           }
@@ -48,11 +48,11 @@ const TableComponent = ({name, month, year, bankNameProp}) => {
       </Table>
       :
       <>
-        {texts.tableComponent.nothingToShowHere}
+        {texts.transactionTable.nothingToShowHere}
       </>
     }
     </>
   )
 }
 
-export default TableComponent
+export default TransactionTable;

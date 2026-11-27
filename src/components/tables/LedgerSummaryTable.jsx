@@ -20,12 +20,12 @@ const LedgerSummaryTable = ({}) => {
                                 return <th key={index}>{i.name}</th>
                             })
                         }
-                        <th>{texts.tableComponent.ledgerSummary.total}</th>
+                        <th>{texts.transactionTable.ledgerSummary.total}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{texts.tableComponent.ledgerSummary.credit}</td>
+                        <td>{texts.transactionTable.ledgerSummary.credit}</td>
                         {
                             banks.map((val) => {
                                 return <td key={val.id}>{credits[val.id]? credits[val.id] : 0}</td>
@@ -36,7 +36,7 @@ const LedgerSummaryTable = ({}) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>{texts.tableComponent.ledgerSummary.debit}</td>
+                        <td>{texts.transactionTable.ledgerSummary.debit}</td>
                         {
                             banks.map((val) => {
                                 return <td key={val.id}>{debits[val.id]? debits[val.id] : 0}</td>
@@ -47,7 +47,7 @@ const LedgerSummaryTable = ({}) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>{texts.tableComponent.ledgerSummary.netCreditOrDebit}</td>
+                        <td>{texts.transactionTable.ledgerSummary.netCreditOrDebit}</td>
                         {
                             banks.map((val) => {
                                 return <td key={val.id}>{netCreditOrDebit[val.id] == undefined? 0 : netCreditOrDebit[val.id].amount}</td>

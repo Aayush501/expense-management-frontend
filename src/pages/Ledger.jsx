@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TableComponent from '../components/tables/TableComponent';
+import TransactionTable from '../components/tables/TransactionTable';
 import { Button } from 'react-bootstrap';
 import DropDownMenu from '../components/DropDownMenu';
 import AddTransactionForm from '../components/forms/AddTransactionForm';
@@ -22,7 +22,7 @@ const Ledger = () => {
             <AddTransactionForm show={showForm} onHide={() => setShowForm(false)} bank={bankName} />
           </div>
         }
-        <TableComponent name={"LEDGER_BOOK"} bankNameProp={bankName} />
+        <TransactionTable name={"LEDGER_BOOK"} bankNameProp={bankName} />
       </div>
     </div>
     </>
